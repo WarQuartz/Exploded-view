@@ -14,16 +14,18 @@ function save(c,t){code=c;token=t;localStorage.evCode=c;localStorage.evToken=t}
 function clear(){code=token=null;localStorage.removeItem("evCode");localStorage.removeItem("evToken")}
 function nameVal(){return ($("#name").value||"Anonymous Human").trim()}
 function choiceMarkup(choices){return choices.map((c,i)=>`<button class="choice" data-i="${i}"><b>${String.fromCharCode(65+i)}.</b> ${c}</button>`).join("")}
-function afterText(a,s){if(!a)return "";return a.type==="text"?a.value:(s.complicationChoices?.[a.value]||"")}
+function answerText(a,choices){if(a===null||a===undefined)return "";if(typeof a==="number")return choices?.[a]||"";return a.type==="text"?a.value:(choices?.[a.value]||"")}
 function setDecks(){
  const cats=["ALL","Weird Little Humans","Partners in Crime","Moral Gremlins","Chemistry Lab","Money & Power","Oh Shit, That's Deep"];
- $("#deck").innerHTML=cats.map(c=>`<option value="${c}">${c==="ALL"?"Surprise Me":c}</option>`).join("")
+ $("#deck").innerHTML=cats.map(c=>`<option value="${c}">${c==="ALL"?"Gerald Chooses":c}</option>`).join("");
+ const modes=["ALL","Friends","Dating / Couples","Family","Coworkers","New People / Anybody","Solo"];
+ $("#mode").innerHTML=modes.map(m=>`<option value="${m}">${m==="ALL"?"Anybody / Surprise Me":m}</option>`).join("")
 }
 setDecks();
 
 $("#create").onclick=async()=>{
  try{
-   const j=await api("/api/rooms",{method:"POST",body:JSON.stringify({name:nameVal(),deck:$("#deck").value,stats:$("#statsConsent").checked})});
+   const j=await api("/api/rooms",{method:"POST",body:JSON.stringify({name:nameVal(),deck:$("#deck").value,mode:$("#mode").value,stats:$("#statsConsent").checked})});
    save(j.code,j.playerToken); await refresh();
  }catch(e){alert(e.message)}
 };
@@ -53,7 +55,7 @@ function renderLobby(r){
 function renderGame(r){
  show("game"); const s=r.scenario;
  $("#gameCode").textContent=r.code;$("#round").textContent=r.round;
- $("#tags").innerHTML=`<span class="tag">${s.category}</span><span class="tag">Level ${s.level}</span>`;
+ $("#tags").innerHTML=`<span class="tag">${s.category}</span><span class="tag">${s.mode||""}</span><span class="tag">${s.angle||""}</span><span class="tag">Level ${s.level}</span>`;
  $("#scenarioTitle").textContent=s.title;$("#setup").textContent=s.setup;
  const p=r.players[r.me-1];
  const isInitial=r.phase==="initial";
@@ -66,7 +68,7 @@ function renderGame(r){
  const already = isInitial ? p.lockedInitial : p.lockedAfter;
  $("#locked").classList.toggle("hidden",!already);
  $("#choices").classList.toggle("hidden",already);
- if(!isInitial && s.complicationType==="text"){
+ if((isInitial && s.initialType==="text") || (!isInitial && s.complicationType==="text")){
    $("#choices").innerHTML='<textarea id="textAnswer" maxlength="500" placeholder="Your answer — the other person cannot see it yet."></textarea><button id="lockText" class="primary">LOCK MY ANSWER</button>';
    $("#lockText").onclick=()=>submitText($("#textAnswer").value);
  } else {
@@ -86,19 +88,20 @@ async function submitText(value){
 }
 function renderReveal(r){
  show("reveal");const s=r.scenario,p1=r.players[0],p2=r.players[1],C=s.choices;
+ const i1=answerText(p1.initial,C),i2=answerText(p2.initial,C),a1=answerText(p1.after,s.complicationChoices),a2=answerText(p2.after,s.complicationChoices);
  $("#revealTitle").textContent=s.title;
  $("#answers").innerHTML=`
- <div class="answer"><b>${p1.name} — first instinct</b><br>${C[p1.initial]}</div>
- <div class="answer"><b>${p2.name} — first instinct</b><br>${C[p2.initial]}</div>
- <div class="answer"><b>${p1.name} — after BOOM</b><br>${afterText(p1.after,s)}</div>\n <div class="answer"><b>${p2.name} — after BOOM</b><br>${afterText(p2.after,s)}</div>`;
- const same0=p1.initial===p2.initial;
- const a1=afterText(p1.after,s),a2=afterText(p2.after,s),same1=a1.trim().toLowerCase()===a2.trim().toLowerCase();
+ <div class="answer"><b>${p1.name} — first instinct</b><br>${i1}</div>
+ <div class="answer"><b>${p2.name} — first instinct</b><br>${i2}</div>
+ <div class="answer"><b>${p1.name} — after BOOM</b><br>${a1}</div>\n <div class="answer"><b>${p2.name} — after BOOM</b><br>${a2}</div>`;
+ const same0=i1.trim().toLowerCase()===i2.trim().toLowerCase();
+ const same1=a1.trim().toLowerCase()===a2.trim().toLowerCase();
  let bits=[
    same0?"You started from the same instinct.":"Your first instincts split.",
    same1?"When Gerald changed the variable, you landed in the same place.":"Gerald changed the variable and your paths split."
  ];
  bits.push("The second answer is a new decision, not a do-over of the first.");
- $("#analysis").innerHTML=`<p>${bits.join(" ")}</p><p><b>The useful question:</b> What made your answer feel right—not which answer wins?</p>`;
+ $("#analysis").innerHTML=`<p>${bits.join(" ")}</p><p><b>The useful question:</b> What mattered most to each of you once the new information arrived?</p>`;
  $("#underhood").textContent=`Under the hood: ${s.dimensions.join(" • ")}. ${s.notes}`;
  $("#nextRound").classList.toggle("hidden",r.me!==1);
  $("#guestWait").classList.toggle("hidden",r.me===1);
