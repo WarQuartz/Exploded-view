@@ -466,5 +466,73 @@
     "complicationPrompt": "What do you hope the animals tell you humans got completely wrong?",
     "complicationType": "text",
     "complicationChoices": []
+  },
+  {
+    "id": "EV016",
+    "title": "The Alibi",
+    "category": "Moral Gremlins",
+    "level": 4,
+    "mode": "Friends",
+    "angle": "Loyalty / Ethics",
+    "setup": "Your best friend calls at 1:13 a.m. and says, “If anybody asks, I've been at your house since nine.” Then hangs up.",
+    "prompt": "What do you do before you know anything else?",
+    "choices": [
+      "Agree until I know what happened.",
+      "Call back and demand the story first.",
+      "Absolutely not.",
+      "Start investigating before answering anyone."
+    ],
+    "complication": "Nothing violent or dangerous happened. Your friend lied to their boss about something that could get them fired.",
+    "complicationPrompt": "What are you willing to protect now?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "The alibi. I gave my word.",
+      "My friend—but I won't actively lie.",
+      "Nothing. They created this.",
+      "Help them tell the truth in the least destructive way possible."
+    ],
+    "dimensions": [
+      "loyalty",
+      "complicity",
+      "boundaries",
+      "responsibility"
+    ],
+    "notes": "Distinguish loyalty to a person from willingness to participate in deception.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV017",
+    "title": "The Friendship Lottery",
+    "category": "Money & Power",
+    "level": 3,
+    "mode": "Friends",
+    "angle": "Money / Entitlement",
+    "setup": "You and a friend have joked for ten years that if either wins the lottery, the other gets $1 million. You win $18 million.",
+    "prompt": "What does your friend actually get?",
+    "choices": [
+      "The million. A deal is a deal.",
+      "Something generous, but not necessarily $1M.",
+      "Nothing automatically. It was a joke.",
+      "We're going shopping before lawyers ruin everything."
+    ],
+    "complication": "You discover your friend has been telling people for years that they're definitely getting their million someday.",
+    "complicationPrompt": "What changes?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Nothing. Still $1M.",
+      "They get less because the entitlement bothers me.",
+      "This makes the joke feel more like a promise.",
+      "We need a conversation before anybody gets anything."
+    ],
+    "dimensions": [
+      "generosity",
+      "expectations",
+      "resentment",
+      "promises"
+    ],
+    "notes": "Watch how perceived entitlement changes generosity.",
+    "status": "Active",
+    "initialType": "choice"
   }
 ]
