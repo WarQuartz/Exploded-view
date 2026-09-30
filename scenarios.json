@@ -704,5 +704,175 @@
     "notes": "Mixed feelings are normal; focus on behavior rather than moralizing emotion.",
     "status": "Active",
     "initialType": "choice"
+  },
+  {
+    "id": "EV023",
+    "title": "Delete My Number",
+    "category": "Oh Shit, That's Deep",
+    "level": 4,
+    "mode": "Friends",
+    "angle": "Conflict / Repair",
+    "setup": "After a fight, your friend texts: “Don't contact me again.”",
+    "prompt": "What happens?",
+    "choices": [
+      "Respect it completely.",
+      "One final message, then stop.",
+      "Give it a few days and try again.",
+      "Depends on what the fight was about."
+    ],
+    "complication": "Two weeks later they start liking your posts and sending memes into a group chat you're both in—but never contact you directly.",
+    "complicationPrompt": "Your move?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Still nothing. They set the boundary.",
+      "Send one meme privately. Diplomatic probe.",
+      "Ask directly whether we're speaking again.",
+      "Make them initiate actual contact."
+    ],
+    "dimensions": [
+      "pride",
+      "repair",
+      "ambiguity",
+      "respect"
+    ],
+    "notes": "Ambiguous digital contact is not the same as explicit repair.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV024",
+    "title": "The Emergency Contact",
+    "category": "Oh Shit, That's Deep",
+    "level": 4,
+    "mode": "Friends",
+    "angle": "Intimacy / Responsibility",
+    "setup": "You discover a friend listed you as their emergency contact without mentioning it.",
+    "prompt": "Reaction?",
+    "choices": [
+      "Touched.",
+      "Concerned.",
+      "Annoyed they didn't ask.",
+      "Well, apparently we're married now."
+    ],
+    "complication": "You learn you're the only person they listed.",
+    "complicationPrompt": "What do you do?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Accept the role.",
+      "Talk about why I'm the only one.",
+      "Ask them to build a wider support system.",
+      "All of the above."
+    ],
+    "dimensions": [
+      "chosen family",
+      "responsibility",
+      "closeness",
+      "burden"
+    ],
+    "notes": "Explore both honor and burden without assuming either response is more caring.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV025",
+    "title": "The Twenty-Year Box",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Best Friends",
+    "angle": "Memory / Identity",
+    "setup": "You find a box you and your friend sealed twenty years ago. On it: DO NOT OPEN UNTIL 2046.",
+    "prompt": "It's sitting right there. What do you do?",
+    "choices": [
+      "Absolutely wait.",
+      "Open it immediately. Past Us had terrible authority.",
+      "Only open it together.",
+      "Shake it aggressively first."
+    ],
+    "complication": "Your friend quietly says, “I already opened it five years ago.”",
+    "complicationPrompt": "What's the question you ask first?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Why?",
+      "What was inside?",
+      "Why didn't you tell me?",
+      "Did opening it change how you saw us?"
+    ],
+    "dimensions": [
+      "nostalgia",
+      "betrayal",
+      "curiosity",
+      "shared ownership"
+    ],
+    "notes": "The first question may reveal what kind of breach feels most important.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV026",
+    "title": "The Parallel Vacation",
+    "category": "Partners in Crime",
+    "level": 3,
+    "mode": "Dating / Couples",
+    "angle": "Independence / Fairness",
+    "setup": "You win a free seven-day vacation—but the prize requires you to vacation separately, in neighboring cities.",
+    "prompt": "Take it?",
+    "choices": [
+      "Absolutely.",
+      "No, vacations are together.",
+      "Yes, but meet halfway once.",
+      "Depends on destination."
+    ],
+    "complication": "One city is wildly better than the other, and only one of you can have it.",
+    "complicationPrompt": "Who gets paradise?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Whoever wants it most.",
+      "Random draw.",
+      "The person who usually compromises.",
+      "Compete for it using an absurd contest."
+    ],
+    "dimensions": [
+      "independence",
+      "fairness",
+      "generosity",
+      "play"
+    ],
+    "notes": "Different couples value togetherness and autonomy differently.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV027",
+    "title": "The Flirt Test",
+    "category": "Chemistry Lab",
+    "level": 4,
+    "mode": "Dating / Couples",
+    "angle": "Jealousy / Boundaries",
+    "setup": "At a party, someone is very obviously flirting with your partner—and your partner appears to enjoy the attention.",
+    "prompt": "What matters?",
+    "choices": [
+      "Nothing unless a boundary is crossed.",
+      "I want acknowledgment from my partner.",
+      "Shut it down.",
+      "I'm watching this fascinating wildlife documentary."
+    ],
+    "complication": "Later your partner says, “I knew they were flirting. It felt good.”",
+    "complicationPrompt": "Your reaction?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "That's human. Fine.",
+      "Fine—but tell me where your line is.",
+      "That bothers me more than the flirting.",
+      "I want to know what they were getting from that attention."
+    ],
+    "dimensions": [
+      "jealousy",
+      "security",
+      "boundaries",
+      "validation"
+    ],
+    "notes": "Do not treat jealousy or non-jealousy as inherently healthier.",
+    "status": "Active",
+    "initialType": "choice"
   }
 ]
