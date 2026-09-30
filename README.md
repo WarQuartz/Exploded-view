@@ -1,38 +1,51 @@
-# Exploded View — Room MVP
+# Exploded View
 
-A no-dependency Node.js two-player web game for Question Quartney.
+Two-player scenario game for Question Quartney.
 
-## What works
-- Host creates a room with a 5-character code.
-- Player 2 joins from a separate phone/browser.
-- Both see the same scenario.
-- Initial answers stay hidden until both lock.
-- Gerald drops the complication.
-- Both re-answer.
-- Answers are revealed only after both commit.
-- Host advances to the next round.
-- 15 scenarios are loaded from the authored Scenario Library.
+## Cloudflare architecture
 
-## Run locally
-Requires Node 18+.
+Exploded View is now Cloudflare-native:
+
+- **Workers Static Assets** serves the mobile UI in `public/`.
+- A **Worker** handles the room API.
+- One **Durable Object per room code** owns the authoritative two-player state.
+- Player answers stay server-side and hidden until both players commit.
+- Durable Object storage preserves room state beyond an individual Worker isolate.
+- `scenarios.json` remains the scenario source for this MVP.
+
+## Local development
 
 ```bash
-node server.js
+npm install
+npm run dev
 ```
 
-Open `http://localhost:3000` on two browser windows/devices.
+## Cloudflare deployment
 
-## Deployment
-The app respects the `PORT` environment variable, so it is ready for a standard Node web service.
+Connect the GitHub repository **WarQuartz/Exploded-view** to Cloudflare Workers Builds.
 
-## MVP storage warning
-Rooms live in server memory. A restart/deploy clears active rooms. That is intentional for this stage.
-The next persistence layer should store sessions/answers without putting authoring content and player data in the same table.
+Build command:
+
+```
+npm install
+```
+
+Deploy command:
+
+```
+npx wrangler deploy
+```
+
+The first deployment applies the `v1` Durable Object migration in `wrangler.toml`.
+
+## Game flow
+
+Host creates a five-character room code → Player 2 joins → both answer secretly → Gerald drops the complication → both answer again → answers reveal → host starts the next round.
 
 ## Next build targets
-1. Session summary across multiple rounds.
-2. Free-response / "write your own" answer.
+
+1. Multi-round session summary.
+2. Free-response answers.
 3. Chaos Cards.
-4. Persistent session store.
-5. Anonymous aggregate analytics.
-6. Question Quartney/Wix entry point.
+4. Anonymous aggregate analytics.
+5. Question Quartney/Wix entry point.
