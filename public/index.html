@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Exploded View</title><link rel="stylesheet" href="/style.css"></head>
+<body><main class="app">
+<section id="screen-home" class="screen">
+<div class="eyebrow">QUESTION QUARTNEY PRESENTS</div><h1>EXPLODED<br><em>VIEW</em></h1>
+<p class="lead">Two phones. One imaginary disaster. No seeing the other person's answer until Gerald says so.</p>
+<div class="card">
+<label>Your name</label><input id="name" maxlength="30" placeholder="Courtney">
+<label>Deck</label><select id="deck"></select>
+<button id="create" class="primary">CREATE A ROOM</button>
+<div class="or">or</div>
+<input id="joinCode" maxlength="5" placeholder="ROOM CODE" autocapitalize="characters">
+<button id="join">JOIN A ROOM</button>
+</div></section>
+
+<section id="screen-lobby" class="screen hidden">
+<div class="eyebrow">ROOM <span id="roomCode"></span></div>
+<h2>Waiting for your accomplice.</h2>
+<div class="code" id="bigCode"></div>
+<p class="muted">Send them this code. Gerald is pretending not to listen.</p>
+<div class="waiting">● <span id="lobbyStatus">1 of 2 players joined</span></div>
+</section>
+
+<section id="screen-game" class="screen hidden">
+<div class="topline"><span>ROOM <b id="gameCode"></b></span><span>ROUND <b id="round"></b></span></div>
+<div class="tags" id="tags"></div>
+<div class="card">
+<div class="eyebrow" id="phaseLabel"></div>
+<h2 id="scenarioTitle"></h2>
+<p class="scenario" id="setup"></p>
+<div id="boom" class="boom hidden">BOOM.</div>
+<p class="scenario complication hidden" id="complication"></p>
+<p class="prompt" id="prompt"></p>
+<div id="choices" class="choices"></div>
+<div id="locked" class="locked hidden">Answer locked. Waiting for the other human...</div>
+</div></section>
+
+<section id="screen-reveal" class="screen hidden">
+<div class="eyebrow">THE EXPLODED VIEW</div><h2 id="revealTitle"></h2>
+<div id="answers"></div>
+<div class="card"><div class="eyebrow">WHAT JUST HAPPENED?</div><div id="analysis" class="scenario"></div>
+<div id="underhood" class="underhood"></div></div>
+<button id="nextRound" class="primary">NEXT DISASTER</button>
+<div id="guestWait" class="locked hidden">Host chooses the next disaster.</div>
+</section>
+</main><script src="/app.js"></script></body></html>
