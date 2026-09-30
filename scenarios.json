@@ -534,5 +534,175 @@
     "notes": "Watch how perceived entitlement changes generosity.",
     "status": "Active",
     "initialType": "choice"
+  },
+  {
+    "id": "EV018",
+    "title": "The Group Chat Leak",
+    "category": "Moral Gremlins",
+    "level": 4,
+    "mode": "Friends",
+    "angle": "Trust / Conflict",
+    "setup": "Someone screenshots your private friend-group chat and sends it to the person being discussed.",
+    "prompt": "What matters first?",
+    "choices": [
+      "Finding the leaker.",
+      "Owning what I personally said.",
+      "Repairing things with the person discussed.",
+      "Everybody needs to calm down."
+    ],
+    "complication": "You discover your closest friend leaked it because they thought the conversation had become cruel.",
+    "complicationPrompt": "What bothers you most?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "They broke confidentiality.",
+      "They were probably right.",
+      "They should have confronted us first.",
+      "I can agree with why and still hate how."
+    ],
+    "dimensions": [
+      "trust",
+      "conscience",
+      "confidentiality",
+      "dissent"
+    ],
+    "notes": "Avoid declaring either confidentiality or intervention inherently superior.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV019",
+    "title": "The Airport Test",
+    "category": "Partners in Crime",
+    "level": 2,
+    "mode": "Friends",
+    "angle": "Reliability / Boundaries",
+    "setup": "Your friend asks you to pick them up from the airport at 2:40 a.m. It's a 55-minute drive.",
+    "prompt": "Your answer?",
+    "choices": [
+      "Obviously.",
+      "Yes, but you owe me enormously.",
+      "Absolutely not—rideshare exists.",
+      "Depends why they need me specifically."
+    ],
+    "complication": "The flight is delayed. Arrival is now 5:20 a.m., and you work at eight.",
+    "complicationPrompt": "Now what?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Still going.",
+      "Pay for their ride instead.",
+      "They need another plan.",
+      "Go—and complain so dramatically it becomes folklore."
+    ],
+    "dimensions": [
+      "sacrifice",
+      "resentment",
+      "practical care",
+      "limits"
+    ],
+    "notes": "Care can appear as presence, money, or a boundary.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV020",
+    "title": "The Awful Tattoo",
+    "category": "Weird Little Humans",
+    "level": 2,
+    "mode": "Friends",
+    "angle": "Honesty / Care",
+    "setup": "Your friend unveils a huge new tattoo. They are thrilled. You think it looks like a raccoon fighting a ceiling fan.",
+    "prompt": "What do you say?",
+    "choices": [
+      "You love it? Then hell yeah.",
+      "Gentle honesty.",
+      "Full honesty. Friends don't let friends become ceiling-fan raccoons.",
+      "Ask what it means before saying anything."
+    ],
+    "complication": "They reveal they designed it themselves and ask, “Do you actually think it's good?”",
+    "complicationPrompt": "What kind of honesty do they get now?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Emotional truth: I love that you love it.",
+      "Diplomatic aesthetic truth.",
+      "The complete raccoon assessment.",
+      "Ask whether they want support or critique."
+    ],
+    "dimensions": [
+      "honesty",
+      "tact",
+      "validation",
+      "social courage"
+    ],
+    "notes": "Keep playful; different honesty styles can all be caring.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV021",
+    "title": "The Friend You Hate",
+    "category": "Moral Gremlins",
+    "level": 3,
+    "mode": "Friends",
+    "angle": "Social Circles / Control",
+    "setup": "Your best friend becomes inseparable from someone you genuinely dislike.",
+    "prompt": "What do you do?",
+    "choices": [
+      "Nothing. Their friendship isn't mine.",
+      "Tell them once, then drop it.",
+      "Avoid the new person entirely.",
+      "Try harder to understand them."
+    ],
+    "complication": "The person you dislike tells your friend something accurate but unflattering about you.",
+    "complicationPrompt": "What's your first concern?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Why they were talking about me.",
+      "Whether the criticism is true.",
+      "Whether my friend defended me.",
+      "Whether I dislike them partly because they see something I don't want seen."
+    ],
+    "dimensions": [
+      "jealousy",
+      "criticism",
+      "autonomy",
+      "defensiveness"
+    ],
+    "notes": "Treat self-reflection as an opening, not a verdict.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV022",
+    "title": "The Secret Talent",
+    "category": "Partners in Crime",
+    "level": 3,
+    "mode": "Friends",
+    "angle": "Competition / Identity",
+    "setup": "You and a friend casually try something neither has done before. They are immediately, offensively good at it. You've secretly wanted to master it for years.",
+    "prompt": "What do you feel first?",
+    "choices": [
+      "Proud of them.",
+      "Jealous as hell.",
+      "Motivated.",
+      "All three, unfortunately."
+    ],
+    "complication": "They're offered the exact opportunity you've wanted.",
+    "complicationPrompt": "What do you do?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Help them get it.",
+      "Tell them this is hard for me but support them.",
+      "Compete for it too.",
+      "Step away until I can be a decent human again."
+    ],
+    "dimensions": [
+      "envy",
+      "ambition",
+      "generosity",
+      "emotional honesty"
+    ],
+    "notes": "Mixed feelings are normal; focus on behavior rather than moralizing emotion.",
+    "status": "Active",
+    "initialType": "choice"
   }
 ]
