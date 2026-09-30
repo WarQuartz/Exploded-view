@@ -1214,5 +1214,175 @@
     "notes": "Memory is reconstructive; do not overinterpret a mismatch.",
     "status": "Active",
     "initialType": "choice"
+  },
+  {
+    "id": "EV038",
+    "title": "The Favorite Child Envelope",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Family",
+    "angle": "Comparison / Attachment",
+    "setup": "After a parent's death, each sibling receives a sealed letter. Yours says, “You were always the one I worried about least.”",
+    "prompt": "How does that land?",
+    "choices": [
+      "Comforting.",
+      "Painful.",
+      "Both.",
+      "I need more context."
+    ],
+    "complication": "Your sibling's letter says, “You were always the one I needed most.”",
+    "complicationPrompt": "What do you compare?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Nothing. Different relationships.",
+      "Everything. I'm human.",
+      "Talk openly with sibling.",
+      "Keep the letters private."
+    ],
+    "dimensions": [
+      "comparison",
+      "attachment",
+      "family roles",
+      "grief"
+    ],
+    "notes": "Different parental messages do not establish objective rankings of children.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV039",
+    "title": "The Family Loan",
+    "category": "Money & Power",
+    "level": 4,
+    "mode": "Family",
+    "angle": "Money / Boundaries",
+    "setup": "A family member needs $4,000 urgently. You can afford it, but losing it would hurt.",
+    "prompt": "What do you do?",
+    "choices": [
+      "Loan it.",
+      "Give only what I can afford never to see again.",
+      "No money; help another way.",
+      "Formal repayment agreement."
+    ],
+    "complication": "You learn they previously borrowed money from another relative and never repaid it.",
+    "complicationPrompt": "Now?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Same answer.",
+      "Smaller amount.",
+      "No cash.",
+      "Pay the actual emergency expense directly."
+    ],
+    "dimensions": [
+      "money",
+      "trust",
+      "boundaries",
+      "care"
+    ],
+    "notes": "Financial boundaries and care can coexist.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV040",
+    "title": "The DNA Surprise",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Family",
+    "angle": "Belonging / Loyalty",
+    "setup": "A DNA test reveals a close relative nobody knew existed. They contact you.",
+    "prompt": "What do you do?",
+    "choices": [
+      "Welcome them immediately.",
+      "Move slowly.",
+      "Verify everything first.",
+      "Let older relatives decide."
+    ],
+    "complication": "One established family member says, “If you bring them into this family, I'm leaving.”",
+    "complicationPrompt": "Who gets to decide belonging?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Nobody owns the family.",
+      "Protect existing relationships first.",
+      "Refuse the ultimatum.",
+      "Slow everything down and understand the history."
+    ],
+    "dimensions": [
+      "belonging",
+      "loyalty",
+      "identity",
+      "boundaries"
+    ],
+    "notes": "Avoid treating genetic relation as automatically defining emotional family.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV041",
+    "title": "The Childhood House",
+    "category": "Oh Shit, That's Deep",
+    "level": 4,
+    "mode": "Family / Solo",
+    "angle": "Nostalgia / Identity",
+    "setup": "Your childhood home unexpectedly comes up for sale at a price you could barely afford.",
+    "prompt": "Buy it?",
+    "choices": [
+      "Yes.",
+      "No—nostalgia is expensive.",
+      "Visit first.",
+      "Only if it makes financial sense independently."
+    ],
+    "complication": "You tour it and realize almost everything you remembered as huge is tiny.",
+    "complicationPrompt": "What do you want now?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Buy it anyway.",
+      "Leave the memory where it was.",
+      "Photograph it and say goodbye.",
+      "I'm suddenly more interested in why memory resized the place."
+    ],
+    "dimensions": [
+      "nostalgia",
+      "memory",
+      "identity",
+      "money"
+    ],
+    "notes": "The scenario explores meaning attached to place, not a financial recommendation.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV042",
+    "title": "The Credit Thief",
+    "category": "Money & Power",
+    "level": 3,
+    "mode": "Coworkers",
+    "angle": "Credit / Conflict",
+    "setup": "A coworker presents your idea in a meeting and gets praised.",
+    "prompt": "What do you do?",
+    "choices": [
+      "Correct the record immediately.",
+      "Speak privately afterward.",
+      "Let it go once.",
+      "Ask a question that makes my contribution obvious."
+    ],
+    "complication": "They later tell you they genuinely thought the idea was developed jointly.",
+    "complicationPrompt": "Now what?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Intent matters; reset expectations.",
+      "Impact matters more.",
+      "Compare memories of how it happened.",
+      "Create clearer ownership next time."
+    ],
+    "dimensions": [
+      "credit",
+      "conflict",
+      "intent",
+      "boundaries"
+    ],
+    "notes": "Separate intent from impact without assuming either account is false.",
+    "status": "Active",
+    "initialType": "choice"
   }
 ]
