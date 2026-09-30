@@ -23,7 +23,7 @@ setDecks();
 
 $("#create").onclick=async()=>{
  try{
-   const j=await api("/api/rooms",{method:"POST",body:JSON.stringify({name:nameVal(),deck:$("#deck").value})});
+   const j=await api("/api/rooms",{method:"POST",body:JSON.stringify({name:nameVal(),deck:$("#deck").value,stats:$("#statsConsent").checked})});
    save(j.code,j.playerToken); await refresh();
  }catch(e){alert(e.message)}
 };
