@@ -1554,5 +1554,175 @@
     "notes": "Separate support for a concern from consent to be named.",
     "status": "Active",
     "initialType": "choice"
+  },
+  {
+    "id": "EV048",
+    "title": "The Mystery Door",
+    "category": "Weird Little Humans",
+    "level": 2,
+    "mode": "New People / Anybody",
+    "angle": "Curiosity / Risk",
+    "setup": "You find a door in your house that definitely wasn't there yesterday. It has no handle.",
+    "prompt": "What do you do?",
+    "choices": [
+      "Find a way in immediately.",
+      "Call someone.",
+      "Ignore it.",
+      "Put a chair in front of it and interrogate reality."
+    ],
+    "complication": "At midnight, someone knocks from inside.",
+    "complicationPrompt": "What do you say first?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Who are you?",
+      "How did you get in my wall?",
+      "Nothing. We are moving.",
+      "Do you know Gerald?"
+    ],
+    "dimensions": [
+      "curiosity",
+      "risk",
+      "humor",
+      "uncertainty"
+    ],
+    "notes": "Primarily playful; avoid reading supernatural beliefs into the answer.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV049",
+    "title": "The Clone Tuesday",
+    "category": "Weird Little Humans",
+    "level": 3,
+    "mode": "New People / Anybody",
+    "angle": "Identity / Responsibility",
+    "setup": "For one Tuesday, you get an exact clone of yourself.",
+    "prompt": "What job does Clone You get?",
+    "choices": [
+      "Work.",
+      "Chores.",
+      "Social obligations.",
+      "We're both abandoning responsibility and conducting experiments."
+    ],
+    "complication": "At 11:45 p.m. the clone says, “I don't want to disappear.”",
+    "complicationPrompt": "Reaction?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Horrified.",
+      "Help them if possible.",
+      "One of us has to go, and I'm pretty attached to being me.",
+      "Ask which one of us is technically the clone."
+    ],
+    "dimensions": [
+      "identity",
+      "responsibility",
+      "empathy",
+      "humor"
+    ],
+    "notes": "Philosophical play, not a claim about consciousness.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV051",
+    "title": "The Invisible Day",
+    "category": "Weird Little Humans",
+    "level": 3,
+    "mode": "New People / Anybody",
+    "angle": "Freedom / Ethics",
+    "setup": "You are completely invisible for 24 hours.",
+    "prompt": "What's the first category of thing you do?",
+    "choices": [
+      "Explore forbidden places.",
+      "Observe people.",
+      "Harmless chaos.",
+      "Use it to help somebody anonymously."
+    ],
+    "complication": "You discover one other invisible person.",
+    "complicationPrompt": "First move?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Team up.",
+      "Hide from them.",
+      "Figure out who they are.",
+      "Establish invisible-person rules immediately."
+    ],
+    "dimensions": [
+      "freedom",
+      "ethics",
+      "curiosity",
+      "cooperation"
+    ],
+    "notes": "Keep hypothetical and playful.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV052",
+    "title": "The Moon Gift Shop",
+    "category": "Weird Little Humans",
+    "level": 2,
+    "mode": "New People / Anybody",
+    "angle": "Meaning / Humor",
+    "setup": "Aliens make peaceful contact. Humanity chooses you to give them one ordinary human object.",
+    "prompt": "What category?",
+    "choices": [
+      "Art.",
+      "Tool.",
+      "Food.",
+      "Something completely ridiculous."
+    ],
+    "complication": "They misunderstand the object and assume it is humanity's most sacred religious artifact.",
+    "complicationPrompt": "Correct them?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Immediately.",
+      "Eventually. This is too funny.",
+      "Never. History has chosen.",
+      "Replace it with something that deserves the honor."
+    ],
+    "dimensions": [
+      "meaning",
+      "representation",
+      "humor",
+      "honesty"
+    ],
+    "notes": "Mostly imaginative play.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV053",
+    "title": "The Talking House",
+    "category": "Weird Little Humans",
+    "level": 2,
+    "mode": "New People / Anybody",
+    "angle": "Curiosity / Belonging",
+    "setup": "Your house suddenly gains consciousness.",
+    "prompt": "First question?",
+    "choices": [
+      "Are you okay?",
+      "What have you seen?",
+      "Can you control the thermostat?",
+      "Please tell me you cannot hear the bathroom."
+    ],
+    "complication": "The house says it has a favorite resident—and it isn't you.",
+    "complicationPrompt": "Reaction?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Demand reasons.",
+      "Fair enough.",
+      "Attempt to win the house over.",
+      "Ask who its least favorite visitor is."
+    ],
+    "dimensions": [
+      "curiosity",
+      "belonging",
+      "humor",
+      "competition"
+    ],
+    "notes": "Mostly play; do not overinterpret.",
+    "status": "Active",
+    "initialType": "choice"
   }
 ]
