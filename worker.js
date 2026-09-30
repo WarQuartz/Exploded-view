@@ -17,7 +17,7 @@ async function handleApi(request, env, url) {
       const stub = env.ROOMS.get(env.ROOMS.idFromName(code));
       const response = await stub.fetch(new Request(new URL("/create", url.origin), {
         method:"POST", headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({code,name:body.name,deck:body.deck})
+        body:JSON.stringify({code,name:body.name,deck:body.deck,stats:body.stats===true})
       }));
       if (response.status !== 409) return response;
     }
@@ -49,6 +49,10 @@ export class Room {
   }
   playerIndex(room,t){return room.players.findIndex(p=>p?.token===t)}
   both(room,f){return room.players.length===2&&room.players.every(p=>p&&p[f]!==null&&p[f]!==undefined)}
+  count(room,s,stage,answer){
+    if(!room.stats||!this.env.ANALYTICS)return;
+    this.env.ANALYTICS.writeDataPoint({indexes:[s.id],blobs:[s.id,s.category||"",stage,answer],doubles:[1]});
+  }
   view(room,t){
     const me=this.playerIndex(room,t);if(me<0)return null;
     const s=this.scenario(room),reveal=room.phase==="reveal";
@@ -66,7 +70,7 @@ export class Room {
     if(request.method==="POST"&&path==="/create"){
       if(await this.load())return json({error:"ROOM_EXISTS"},409);
       const body=await request.json().catch(()=>({})),first=this.pick(body.deck||"ALL");
-      const room={code:body.code,deck:body.deck||"ALL",phase:"lobby",round:1,scenarioId:first.id,
+      const room={code:body.code,deck:body.deck||"ALL",stats:body.stats===true,phase:"lobby",round:1,scenarioId:first.id,
         players:[{token:token(),name:String(body.name||"Player 1").slice(0,30),initial:null,after:null}],createdAt:Date.now(),updatedAt:Date.now()};
       await this.save(room);return json({code:room.code,playerToken:room.players[0].token},201);
     }
@@ -84,18 +88,18 @@ export class Room {
       if(room.phase==="initial"){
         const choice=Number(body.choice);
         if(!Number.isInteger(choice)||choice<0||choice>=s.choices.length)return json({error:"INVALID_CHOICE"},400);
-        room.players[pi].initial=choice;if(this.both(room,"initial"))room.phase="complication";
+        room.players[pi].initial=choice;this.count(room,s,"initial",String(choice));if(this.both(room,"initial"))room.phase="complication";
       }
       else if(room.phase==="complication"||room.phase==="after"){
         room.phase="after";
         if(s.complicationType==="text"){
           const answer=String(body.text||"").trim().slice(0,500);
           if(!answer)return json({error:"ANSWER_REQUIRED"},400);
-          room.players[pi].after={type:"text",value:answer};
+          room.players[pi].after={type:"text",value:answer};this.count(room,s,"boom","text");
         } else {
           const choice=Number(body.choice);
           if(!Number.isInteger(choice)||choice<0||choice>=s.complicationChoices.length)return json({error:"INVALID_CHOICE"},400);
-          room.players[pi].after={type:"choice",value:choice};
+          room.players[pi].after={type:"choice",value:choice};this.count(room,s,"boom",String(choice));
         }
         if(this.both(room,"after"))room.phase="reveal";
       }
