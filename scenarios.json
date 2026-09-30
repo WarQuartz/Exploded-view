@@ -1,0 +1,360 @@
+[
+  {
+    "id": "EV001",
+    "title": "The $10,000 Terrible Idea",
+    "category": "Partners in Crime",
+    "level": 2,
+    "mode": "Two-player",
+    "setup": "You and your date find a duffel bag in a parking lot containing exactly $10,000 cash, a Polaroid of a llama, and a hotel key card. No ID. You have until midnight to decide what to do.",
+    "prompt": "What is your plan?",
+    "choices": [
+      "Try to identify the owner without touching the cash.",
+      "Turn it in to police/security immediately.",
+      "Keep the cash but investigate the llama/key card mystery.",
+      "Leave it exactly where it is and walk away."
+    ],
+    "complication": "At 11:40 p.m. someone texts your phone: “You found Gerald.” Do you answer?",
+    "dimensions": [
+      "risk tolerance",
+      "ethics",
+      "curiosity",
+      "teamwork",
+      "uncertainty"
+    ],
+    "notes": "Notice reasoning, not just choice. Does the person revise when new information appears?"
+  },
+  {
+    "id": "EV002",
+    "title": "IKEA Divorce Simulator",
+    "category": "Partners in Crime",
+    "level": 2,
+    "mode": "Two-player",
+    "setup": "You are magically married for 45 minutes. You have an empty apartment, $900, and an IKEA cart. Anything left over pays for dinner.",
+    "prompt": "Which room do you furnish first, and who gets final veto power?",
+    "choices": [
+      "Bedroom; split veto equally.",
+      "Living room; whoever cares most gets veto.",
+      "Kitchen; decide by usefulness.",
+      "Spend almost nothing and go somewhere ridiculous for dinner."
+    ],
+    "complication": "At checkout, one of you secretly added a completely unnecessary $349 item. What did you sneak in, and does it stay?",
+    "dimensions": [
+      "money",
+      "negotiation",
+      "priorities",
+      "play",
+      "control"
+    ],
+    "notes": "Watch how they negotiate disagreement and whether fun is treated as wasteful or valuable."
+  },
+  {
+    "id": "EV003",
+    "title": "The Accidental Cult",
+    "category": "Moral Gremlins",
+    "level": 3,
+    "mode": "Two-player",
+    "setup": "A joke you made together online is misunderstood. Six months later 47,000 people genuinely believe you are spiritual leaders. Followers are outside asking for today’s teaching.",
+    "prompt": "What do you do?",
+    "choices": [
+      "Confess immediately and dismantle it.",
+      "Use the platform for something genuinely helpful, then reveal the truth.",
+      "Lean into it as performance art.",
+      "Disappear and let the legend eat itself."
+    ],
+    "complication": "A follower donates $2 million to the movement, legally and voluntarily. Now what?",
+    "dimensions": [
+      "power",
+      "honesty",
+      "temptation",
+      "responsibility",
+      "influence"
+    ],
+    "notes": "Look for what changes when power becomes materially rewarding."
+  },
+  {
+    "id": "EV004",
+    "title": "The 24-Hour Kingdom",
+    "category": "Money & Power",
+    "level": 3,
+    "mode": "Two-player",
+    "setup": "For 24 hours you jointly rule a tiny country of 30,000 people, one beautiful beach, too many goats, and no existing laws. You may create only three laws.",
+    "prompt": "Choose one serious law, one happiness law, and one ridiculous law.",
+    "choices": [
+      "Protect basic rights; mandatory nap hour; goats get tiny hats.",
+      "Universal essentials; public celebration day; ban leaf blowers before 10.",
+      "Maximum personal freedom; community feast; politicians must wear sponsor patches.",
+      "Create your own three laws."
+    ],
+    "complication": "Citizens overwhelmingly demand a fourth law that both of you hate. Do you allow it?",
+    "dimensions": [
+      "authority",
+      "democracy",
+      "liberty",
+      "paternalism",
+      "humor"
+    ],
+    "notes": "The follow-up matters more than the first answer: how does the person handle legitimate disagreement?"
+  },
+  {
+    "id": "EV005",
+    "title": "The Ex Museum",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Solo/Two-player",
+    "setup": "Every person you have dated gets one anonymous museum exhibit representing the relationship. No names and no photographs—just one object and a title.",
+    "prompt": "Describe one exhibit.",
+    "choices": [
+      "Choose an object representing what you learned.",
+      "Choose an object representing what you lost.",
+      "Choose an object representing what was absurd about it.",
+      "Choose an object representing what you contributed to the mess."
+    ],
+    "complication": "Now create the exhibit representing YOU as somebody else’s ex.",
+    "dimensions": [
+      "accountability",
+      "narrative identity",
+      "grief",
+      "humor",
+      "self-awareness"
+    ],
+    "notes": "Do they cast themselves only as victim/hero, or can they see their own footprint?"
+  },
+  {
+    "id": "EV006",
+    "title": "The Beautiful Lie",
+    "category": "Moral Gremlins",
+    "level": 3,
+    "mode": "Two-player",
+    "setup": "Press a button and you both receive $2 million, legally and tax-free. Somewhere in the world one stranger will permanently believe one harmless false fact of your choosing.",
+    "prompt": "Do you press it, and what false fact do you choose?",
+    "choices": [
+      "Yes—make the lie delightfully harmless.",
+      "No—consent matters even when harm seems tiny.",
+      "Yes, but only if we can choose a beneficial lie.",
+      "Need more information before deciding."
+    ],
+    "complication": "The stranger is your future child. Same answer?",
+    "dimensions": [
+      "principles",
+      "consent",
+      "money",
+      "rationalization",
+      "proximity"
+    ],
+    "notes": "Compare principle before and after emotional proximity is introduced."
+  },
+  {
+    "id": "EV007",
+    "title": "The Apocalypse Draft",
+    "category": "Oh Shit, That's Deep",
+    "level": 4,
+    "mode": "Two-player",
+    "setup": "Civilization moves underground for ten years. Necessities are provided. Each of you may bring five completely nonessential objects. Not people. Not survival gear.",
+    "prompt": "What five things keep you human?",
+    "choices": [
+      "Comfort objects.",
+      "Creative tools.",
+      "Entertainment or technology.",
+      "Sentimental objects."
+    ],
+    "complication": "Trade lists. Each person must delete one item from the other’s list and replace it.",
+    "dimensions": [
+      "identity",
+      "attachment",
+      "comfort",
+      "autonomy",
+      "negotiation"
+    ],
+    "notes": "What they protect after the swap may reveal more than the original five."
+  },
+  {
+    "id": "EV008",
+    "title": "The Rotating Whale Bed",
+    "category": "Chemistry Lab",
+    "level": 4,
+    "mode": "Two-player",
+    "setup": "There is one twelve-foot-wide circular bed. It rotates slowly and plays whale sounds whenever anyone moves. You must both sleep there. One controls lighting; the other controls temperature.",
+    "prompt": "What is your one additional environmental demand?",
+    "choices": [
+      "Perfect blanket arrangement.",
+      "A strict no-touch sleeping zone.",
+      "Snacks and water within reach.",
+      "Music to drown out the whales."
+    ],
+    "complication": "At 2 a.m. the bed begins rotating twice as fast. Who is fixing this disaster?",
+    "dimensions": [
+      "comfort",
+      "touch boundaries",
+      "adaptability",
+      "humor",
+      "caretaking"
+    ],
+    "notes": "Keep interpretation light; this is about negotiating comfort and closeness, not diagnosing sexuality."
+  },
+  {
+    "id": "EV009",
+    "title": "The Restaurant Inheritance",
+    "category": "Money & Power",
+    "level": 4,
+    "mode": "Two-player",
+    "setup": "You inherit a profitable restaurant together. The chef is brilliant and responsible for much of the profit, but is cruel to staff. Replacing him probably cuts profit 30% for a year.",
+    "prompt": "What do you do?",
+    "choices": [
+      "Replace him immediately.",
+      "Give one structured chance with consequences.",
+      "Keep him and improve protections for staff.",
+      "Sell your share rather than run it."
+    ],
+    "complication": "Plot twist: the chef is your brother.",
+    "dimensions": [
+      "loyalty",
+      "profit",
+      "authority",
+      "family",
+      "fairness"
+    ],
+    "notes": "The principle-versus-proximity shift is the key data point."
+  },
+  {
+    "id": "EV010",
+    "title": "The Tiny Crime",
+    "category": "Moral Gremlins",
+    "level": 3,
+    "mode": "Two-player",
+    "setup": "You discover your date has been stealing exactly one plastic spoon from every restaurant they visit for ten years. They have 1,842 spoons arranged beautifully at home.",
+    "prompt": "Your reaction?",
+    "choices": [
+      "This is ridiculous; stop doing it.",
+      "I hate that I find this charming.",
+      "Return or replace the spoons somehow.",
+      "I have several logistical questions."
+    ],
+    "complication": "You discover every spoon is labeled with the date and who they ate with.",
+    "dimensions": [
+      "rules",
+      "eccentricity",
+      "sentiment",
+      "proportionality",
+      "curiosity"
+    ],
+    "notes": "Useful because the 'wrong' act is trivial enough to expose proportionality rather than obvious morality."
+  },
+  {
+    "id": "EV011",
+    "title": "The Free House With One Rule",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Two-player",
+    "setup": "You are given a beautiful paid-off house in your ideal location. You may never change one room. It belongs exactly as the previous owner left it, forever.",
+    "prompt": "Do you take the house?",
+    "choices": [
+      "Yes; one weird room is worth it.",
+      "No; ownership without control isn't ownership.",
+      "Only after seeing the room.",
+      "Take it and turn the restriction into a ritual."
+    ],
+    "complication": "The room contains hundreds of unopened letters addressed to the previous owner.",
+    "dimensions": [
+      "control",
+      "boundaries",
+      "curiosity",
+      "respect",
+      "attachment"
+    ],
+    "notes": "Notice how ownership, privacy, and mystery interact."
+  },
+  {
+    "id": "EV012",
+    "title": "The Wrong Wedding",
+    "category": "Partners in Crime",
+    "level": 2,
+    "mode": "Two-player",
+    "setup": "You arrive dressed up for a wedding and realize neither of you knows the couple. You are at the wrong venue, but everyone assumes you belong and hands you champagne.",
+    "prompt": "What do you do for the next 20 minutes?",
+    "choices": [
+      "Leave immediately and find the real wedding.",
+      "Stay briefly, toast the strangers, then leave.",
+      "Commit to the bit and invent a backstory.",
+      "Quietly figure out who everyone is before deciding."
+    ],
+    "complication": "The bride asks how you know her mother and hands you the microphone.",
+    "dimensions": [
+      "social confidence",
+      "honesty",
+      "improvisation",
+      "risk",
+      "humor"
+    ],
+    "notes": "Great early-date scenario because playfulness itself becomes visible."
+  },
+  {
+    "id": "EV013",
+    "title": "The One-Year Fame Button",
+    "category": "Money & Power",
+    "level": 4,
+    "mode": "Solo/Two-player",
+    "setup": "You can become world-famous for exactly one year for something you choose. After one year, everyone forgets you completely except people who genuinely knew you beforehand.",
+    "prompt": "Do you press it, and what are you famous for?",
+    "choices": [
+      "Yes—for something meaningful.",
+      "Yes—for something absurd and lucrative.",
+      "No—fame sounds exhausting.",
+      "Yes, but anonymously/masked if allowed."
+    ],
+    "complication": "You learn you cannot profit financially from the fame.",
+    "dimensions": [
+      "status",
+      "recognition",
+      "ambition",
+      "intrinsic motivation"
+    ],
+    "notes": "What remains attractive after money is removed?"
+  },
+  {
+    "id": "EV014",
+    "title": "The Memory Trade",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Two-player",
+    "setup": "You may permanently erase one painful memory, but in exchange you also lose one happy memory chosen at random.",
+    "prompt": "Do you make the trade?",
+    "choices": [
+      "Yes; some pain costs too much.",
+      "No; my history is part of me.",
+      "Depends which painful memory I can remove.",
+      "I would want to know the odds/terms first."
+    ],
+    "complication": "You learn the happy memory lost will involve someone you love.",
+    "dimensions": [
+      "identity",
+      "pain",
+      "meaning",
+      "attachment",
+      "uncertainty"
+    ],
+    "notes": "Avoid treating any answer as pathology; this is about meaning-making and tradeoffs."
+  },
+  {
+    "id": "EV015",
+    "title": "The Animal Translator",
+    "category": "Weird Little Humans",
+    "level": 1,
+    "mode": "Two-player",
+    "setup": "For one day you can understand one species perfectly, but they can also understand everything you say about them.",
+    "prompt": "Which species do you choose?",
+    "choices": [
+      "Dogs.",
+      "Crows/ravens.",
+      "Whales/dolphins.",
+      "Choose your own."
+    ],
+    "complication": "The first thing they tell you is that humans have misunderstood one major thing about them. What do you hope it is?",
+    "dimensions": [
+      "curiosity",
+      "empathy",
+      "imagination",
+      "anthropomorphism"
+    ],
+    "notes": "Pure play with a small window into curiosity and empathy."
+  }
+]
