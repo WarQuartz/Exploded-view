@@ -13,7 +13,8 @@ async function api(path,opts={}){
 function save(c,t){code=c;token=t;localStorage.evCode=c;localStorage.evToken=t}
 function clear(){code=token=null;localStorage.removeItem("evCode");localStorage.removeItem("evToken")}
 function nameVal(){return ($("#name").value||"Anonymous Human").trim()}
-function choiceMarkup(s){return s.choices.map((c,i)=>`<button class="choice" data-i="${i}"><b>${String.fromCharCode(65+i)}.</b> ${c}</button>`).join("")}
+function choiceMarkup(choices){return choices.map((c,i)=>`<button class="choice" data-i="${i}"><b>${String.fromCharCode(65+i)}.</b> ${c}</button>`).join("")}
+function afterText(a,s){if(!a)return "";return a.type==="text"?a.value:(s.complicationChoices?.[a.value]||"")}
 function setDecks(){
  const cats=["ALL","Weird Little Humans","Partners in Crime","Moral Gremlins","Chemistry Lab","Money & Power","Oh Shit, That's Deep"];
  $("#deck").innerHTML=cats.map(c=>`<option value="${c}">${c==="ALL"?"Surprise Me":c}</option>`).join("")
@@ -53,22 +54,34 @@ function renderGame(r){
  show("game"); const s=r.scenario;
  $("#gameCode").textContent=r.code;$("#round").textContent=r.round;
  $("#tags").innerHTML=`<span class="tag">${s.category}</span><span class="tag">Level ${s.level}</span>`;
- $("#scenarioTitle").textContent=s.title;$("#setup").textContent=s.setup;$("#prompt").textContent=s.prompt;
+ $("#scenarioTitle").textContent=s.title;$("#setup").textContent=s.setup;
  const p=r.players[r.me-1];
  const isInitial=r.phase==="initial";
  const after=r.phase==="complication"||r.phase==="after";
  $("#boom").classList.toggle("hidden",!after);
  $("#complication").classList.toggle("hidden",!after);
  $("#complication").textContent=s.complication||"";
- $("#phaseLabel").textContent=isInitial?"FIRST INSTINCT — ANSWER SECRETLY":"VARIABLE CHANGED — RE-DECIDE";
+ $("#phaseLabel").textContent=isInitial?"FIRST INSTINCT — ANSWER SECRETLY":"GERALD CHANGED THE VARIABLE";
+ $("#prompt").textContent=isInitial?s.prompt:(s.complicationPrompt||"What do you do now?");
  const already = isInitial ? p.lockedInitial : p.lockedAfter;
  $("#locked").classList.toggle("hidden",!already);
  $("#choices").classList.toggle("hidden",already);
- $("#choices").innerHTML=choiceMarkup(s);
- document.querySelectorAll(".choice").forEach(b=>b.onclick=()=>submitAnswer(+b.dataset.i));
+ if(!isInitial && s.complicationType==="text"){
+   $("#choices").innerHTML='<textarea id="textAnswer" maxlength="500" placeholder="Your answer — the other person cannot see it yet."></textarea><button id="lockText" class="primary">LOCK MY ANSWER</button>';
+   $("#lockText").onclick=()=>submitText($("#textAnswer").value);
+ } else {
+   const options=isInitial?s.choices:s.complicationChoices;
+   $("#choices").innerHTML=choiceMarkup(options);
+   document.querySelectorAll(".choice").forEach(b=>b.onclick=()=>submitAnswer(+b.dataset.i));
+ }
 }
 async function submitAnswer(choice){
  try{await api(`/api/rooms/${code}/answer`,{method:"POST",body:JSON.stringify({choice})}); await refresh()}
+ catch(e){alert(e.message)}
+}
+async function submitText(value){
+ if(!value.trim())return alert("Give Gerald something to work with.");
+ try{await api(`/api/rooms/${code}/answer`,{method:"POST",body:JSON.stringify({text:value})});await refresh()}
  catch(e){alert(e.message)}
 }
 function renderReveal(r){
@@ -77,16 +90,14 @@ function renderReveal(r){
  $("#answers").innerHTML=`
  <div class="answer"><b>${p1.name} — first instinct</b><br>${C[p1.initial]}</div>
  <div class="answer"><b>${p2.name} — first instinct</b><br>${C[p2.initial]}</div>
- <div class="answer"><b>${p1.name} — after BOOM</b><br>${C[p1.after]}</div>
- <div class="answer"><b>${p2.name} — after BOOM</b><br>${C[p2.after]}</div>`;
- const same0=p1.initial===p2.initial,same1=p1.after===p2.after,c1=p1.initial!==p1.after,c2=p2.initial!==p2.after;
+ <div class="answer"><b>${p1.name} — after BOOM</b><br>${afterText(p1.after,s)}</div>\n <div class="answer"><b>${p2.name} — after BOOM</b><br>${afterText(p2.after,s)}</div>`;
+ const same0=p1.initial===p2.initial;
+ const a1=afterText(p1.after,s),a2=afterText(p2.after,s),same1=a1.trim().toLowerCase()===a2.trim().toLowerCase();
  let bits=[
    same0?"You started from the same instinct.":"Your first instincts split.",
-   same1?"After the complication, you converged.":"After the complication, you still landed differently."
+   same1?"When Gerald changed the variable, you landed in the same place.":"Gerald changed the variable and your paths split."
  ];
- if(c1&&c2) bits.push("Both of you revised. Gerald found the pressure point.");
- else if(c1||c2) bits.push(`${c1?p1.name:p2.name} changed position while the other held.`);
- else bits.push("Neither of you moved. Now figure out whether that was principle, certainty, or stubbornness.");
+ bits.push("The second answer is a new decision, not a do-over of the first.");
  $("#analysis").innerHTML=`<p>${bits.join(" ")}</p><p><b>The useful question:</b> What made your answer feel right—not which answer wins?</p>`;
  $("#underhood").textContent=`Under the hood: ${s.dimensions.join(" • ")}. ${s.notes}`;
  $("#nextRound").classList.toggle("hidden",r.me!==1);
