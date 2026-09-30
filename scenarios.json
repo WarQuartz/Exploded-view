@@ -874,5 +874,175 @@
     "notes": "Do not treat jealousy or non-jealousy as inherently healthier.",
     "status": "Active",
     "initialType": "choice"
+  },
+  {
+    "id": "EV028",
+    "title": "The $600 Surprise",
+    "category": "Money & Power",
+    "level": 3,
+    "mode": "Couples",
+    "angle": "Money / Gratitude",
+    "setup": "Your partner spends $600 of shared discretionary money on a surprise for you.",
+    "prompt": "Reaction?",
+    "choices": [
+      "Delighted.",
+      "Horrified by the price.",
+      "Depends what it is.",
+      "Appreciate intent, discuss money later."
+    ],
+    "complication": "You hate the gift. They are visibly proud of choosing it.",
+    "complicationPrompt": "What do you say?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Tell the truth immediately.",
+      "Protect the moment and discuss it later.",
+      "Keep it anyway.",
+      "Return it together and turn the refund into an adventure."
+    ],
+    "dimensions": [
+      "money",
+      "gratitude",
+      "honesty",
+      "intention"
+    ],
+    "notes": "Separate gratitude for intention from preference about the object.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV029",
+    "title": "The Five-Year Door",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Couples",
+    "angle": "Ambition / Partnership",
+    "setup": "You're offered your dream opportunity—but it requires relocating for five years.",
+    "prompt": "What matters first?",
+    "choices": [
+      "Take the opportunity.",
+      "Protect the relationship.",
+      "Find a third option.",
+      "Decide together before either person claims a preference."
+    ],
+    "complication": "Your partner secretly applied for the opportunity for you.",
+    "complicationPrompt": "Does that feel loving or invasive?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Loving.",
+      "Invasive.",
+      "Both.",
+      "Depends entirely on why they didn't tell me."
+    ],
+    "dimensions": [
+      "ambition",
+      "partnership",
+      "autonomy",
+      "support"
+    ],
+    "notes": "Intent and consent can coexist in tension.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV030",
+    "title": "The Password Afterlife",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Couples",
+    "angle": "Privacy / Grief",
+    "setup": "A ridiculous legal service lets couples decide what happens to their phones after death.",
+    "prompt": "Your partner dies. Should you get complete access?",
+    "choices": [
+      "Yes.",
+      "No. Privacy survives death.",
+      "Only designated things.",
+      "I don't even want that responsibility."
+    ],
+    "complication": "Before dying, they deliberately selected “Destroy everything unread.”",
+    "complicationPrompt": "What feeling wins?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Respect.",
+      "Suspicion.",
+      "Hurt.",
+      "Curiosity I would have to live with."
+    ],
+    "dimensions": [
+      "privacy",
+      "trust",
+      "grief",
+      "boundaries"
+    ],
+    "notes": "Keep hypothetical and avoid treating curiosity as evidence of mistrust.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV031",
+    "title": "The One Bedroom Rule",
+    "category": "Chemistry Lab",
+    "level": 3,
+    "mode": "Couples",
+    "angle": "Closeness / Independence",
+    "setup": "You can live rent-free for three years in a beautiful house—but it has one bedroom and two completely separate beds that cannot be moved together.",
+    "prompt": "Take it?",
+    "choices": [
+      "Free house. Obviously.",
+      "No.",
+      "Yes, and make sleeping apart fun.",
+      "We'd break the rule somehow."
+    ],
+    "complication": "After six months, one person discovers they actually sleep dramatically better alone.",
+    "complicationPrompt": "What now?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Keep separate beds.",
+      "Return to sharing afterward.",
+      "Alternate.",
+      "Talk about whether closeness and sleeping have been unnecessarily fused together."
+    ],
+    "dimensions": [
+      "closeness",
+      "sleep",
+      "independence",
+      "adaptation"
+    ],
+    "notes": "Sleeping arrangements are practical preferences, not measures of love.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV032",
+    "title": "Your Ex Was Right",
+    "category": "Oh Shit, That's Deep",
+    "level": 4,
+    "mode": "Dating / Couples",
+    "angle": "Feedback / Ego",
+    "setup": "Your partner's ex once warned them about one of your habits.",
+    "prompt": "Do you want to know what they said?",
+    "choices": [
+      "Absolutely.",
+      "Nope. Ex archaeology is forbidden.",
+      "Only if it's affecting us.",
+      "Yes, but I reserve the right to mock the source."
+    ],
+    "complication": "You hear it. They're right.",
+    "complicationPrompt": "Hardest part?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Changing the behavior.",
+      "Admitting the ex was right.",
+      "Wondering why my partner didn't tell me first.",
+      "Nothing. Useful information is useful information."
+    ],
+    "dimensions": [
+      "feedback",
+      "ego",
+      "trust",
+      "change"
+    ],
+    "notes": "Focus on response to useful criticism, not the ex as authority.",
+    "status": "Active",
+    "initialType": "choice"
   }
 ]
