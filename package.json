@@ -1,13 +1,13 @@
 {
   "name": "exploded-view",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
-  "description": "Two-player scenario game for Question Quartney",
-  "main": "server.js",
+  "description": "Two-player scenario game for Question Quartney on Cloudflare Workers",
   "scripts": {
-    "start": "node server.js"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
   },
-  "engines": {
-    "node": ">=18"
+  "devDependencies": {
+    "wrangler": "^4.0.0"
   }
 }
