@@ -13,3 +13,7 @@ class_name = "Room"
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["Room"]
+
+[[analytics_engine_datasets]]
+binding = "ANALYTICS"
+dataset = "exploded_view_responses"
