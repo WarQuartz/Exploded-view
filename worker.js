@@ -17,7 +17,7 @@ async function handleApi(request, env, url) {
       const stub = env.ROOMS.get(env.ROOMS.idFromName(code));
       const response = await stub.fetch(new Request(new URL("/create", url.origin), {
         method:"POST", headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({code,name:body.name,deck:body.deck,stats:body.stats===true})
+        body:JSON.stringify({code,name:body.name,deck:body.deck,mode:body.mode,stats:body.stats===true})
       }));
       if (response.status !== 409) return response;
     }
@@ -42,8 +42,10 @@ export class Room {
   load(){return this.state.storage.get("room")}
   async save(room){room.updatedAt=Date.now();await this.state.storage.put("room",room)}
   scenario(room){return scenarios.find(s=>s.id===room.scenarioId)}
-  pick(deck,exclude=null){
-    let pool=scenarios.filter(s=>deck==="ALL"||s.category===deck);
+  pick(deck,mode="ALL",exclude=null){
+    const modeMatch=s=>{const m=(s.mode||"").toLowerCase();if(mode==="ALL")return true;if(mode==="Friends")return m.includes("friend");if(mode==="Dating / Couples")return m.includes("dating")||m.includes("couple")||m==="two-player";if(mode==="Family")return m.includes("family");if(mode==="Coworkers")return m.includes("cowork")||m.includes("work friend");if(mode==="New People / Anybody")return m.includes("new people")||m.includes("anybody");if(mode==="Solo")return m.includes("solo");return true};
+    let pool=scenarios.filter(s=>(deck==="ALL"||s.category===deck)&&modeMatch(s));
+    if(!pool.length)pool=scenarios.filter(modeMatch);
     if(exclude&&pool.length>1)pool=pool.filter(s=>s.id!==exclude);
     return pool[Math.floor(Math.random()*pool.length)];
   }
@@ -51,14 +53,14 @@ export class Room {
   both(room,f){return room.players.length===2&&room.players.every(p=>p&&p[f]!==null&&p[f]!==undefined)}
   count(room,s,stage,answer){
     if(!room.stats||!this.env.ANALYTICS)return;
-    this.env.ANALYTICS.writeDataPoint({indexes:[s.id],blobs:[s.id,s.category||"",stage,answer],doubles:[1]});
+    this.env.ANALYTICS.writeDataPoint({indexes:[s.id],blobs:[s.id,s.category||"",s.mode||"",s.angle||"",stage,answer],doubles:[1]});
   }
   view(room,t){
     const me=this.playerIndex(room,t);if(me<0)return null;
     const s=this.scenario(room),reveal=room.phase==="reveal";
-    return {code:room.code,phase:room.phase,deck:room.deck,round:room.round,me:me+1,
+    return {code:room.code,phase:room.phase,deck:room.deck,mode:room.mode,round:room.round,me:me+1,
       players:room.players.map(p=>p?({joined:true,name:p.name,lockedInitial:p.initial!==null,lockedAfter:p.after!==null,...(reveal?{initial:p.initial,after:p.after}:{})}):({joined:false})),
-      scenario:s?{id:s.id,title:s.title,category:s.category,level:s.level,setup:s.setup,prompt:s.prompt,choices:s.choices,
+      scenario:s?{id:s.id,title:s.title,category:s.category,level:s.level,mode:s.mode,angle:s.angle,setup:s.setup,prompt:s.prompt,initialType:s.initialType||"choice",choices:s.choices,
         complication:["complication","after","reveal"].includes(room.phase)?s.complication:null,
         complicationPrompt:["complication","after","reveal"].includes(room.phase)?s.complicationPrompt:null,
         complicationType:["complication","after","reveal"].includes(room.phase)?s.complicationType:null,
@@ -69,8 +71,8 @@ export class Room {
     const url=new URL(request.url),path=url.pathname;
     if(request.method==="POST"&&path==="/create"){
       if(await this.load())return json({error:"ROOM_EXISTS"},409);
-      const body=await request.json().catch(()=>({})),first=this.pick(body.deck||"ALL");
-      const room={code:body.code,deck:body.deck||"ALL",stats:body.stats===true,phase:"lobby",round:1,scenarioId:first.id,
+      const body=await request.json().catch(()=>({})),deck=body.deck||"ALL",mode=body.mode||"ALL",first=this.pick(deck,mode);
+      const room={code:body.code,deck,mode,stats:body.stats===true,phase:"lobby",round:1,scenarioId:first.id,
         players:[{token:token(),name:String(body.name||"Player 1").slice(0,30),initial:null,after:null}],createdAt:Date.now(),updatedAt:Date.now()};
       await this.save(room);return json({code:room.code,playerToken:room.players[0].token},201);
     }
@@ -86,9 +88,14 @@ export class Room {
     if(request.method==="POST"&&path==="/answer"){
       const body=await request.json().catch(()=>({})),s=this.scenario(room);
       if(room.phase==="initial"){
-        const choice=Number(body.choice);
-        if(!Number.isInteger(choice)||choice<0||choice>=s.choices.length)return json({error:"INVALID_CHOICE"},400);
-        room.players[pi].initial=choice;this.count(room,s,"initial",String(choice));if(this.both(room,"initial"))room.phase="complication";
+        if((s.initialType||"choice")==="text"){
+          const answer=String(body.text||"").trim().slice(0,500);if(!answer)return json({error:"ANSWER_REQUIRED"},400);
+          room.players[pi].initial={type:"text",value:answer};this.count(room,s,"initial","text");
+        } else {
+          const choice=Number(body.choice);if(!Number.isInteger(choice)||choice<0||choice>=s.choices.length)return json({error:"INVALID_CHOICE"},400);
+          room.players[pi].initial={type:"choice",value:choice};this.count(room,s,"initial",String(choice));
+        }
+        if(this.both(room,"initial"))room.phase="complication";
       }
       else if(room.phase==="complication"||room.phase==="after"){
         room.phase="after";
@@ -109,7 +116,7 @@ export class Room {
     if(request.method==="POST"&&path==="/next"){
       if(room.phase!=="reveal")return json({error:"ROUND_NOT_FINISHED"},409);
       if(pi!==0)return json({error:"HOST_ONLY"},403);
-      const next=this.pick(room.deck,room.scenarioId);room.scenarioId=next.id;room.round++;room.phase="initial";
+      const next=this.pick(room.deck,room.mode||"ALL",room.scenarioId);room.scenarioId=next.id;room.round++;room.phase="initial";
       room.players.forEach(p=>{p.initial=null;p.after=null});await this.save(room);return json(this.view(room,t));
     }
     return json({error:"NOT_FOUND"},404);
