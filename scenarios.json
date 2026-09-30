@@ -1384,5 +1384,175 @@
     "notes": "Separate intent from impact without assuming either account is false.",
     "status": "Active",
     "initialType": "choice"
+  },
+  {
+    "id": "EV043",
+    "title": "Cover My Shift",
+    "category": "Moral Gremlins",
+    "level": 3,
+    "mode": "Coworkers / Work Friends",
+    "angle": "Trust / Boundaries",
+    "setup": "A coworker asks you to cover their shift because of a “family emergency.”",
+    "prompt": "Do it?",
+    "choices": [
+      "Yes.",
+      "Depends on my plans.",
+      "Need more information.",
+      "No explanation required; either I can or can't."
+    ],
+    "complication": "Instagram reveals they're at a concert.",
+    "complicationPrompt": "What bothers you?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "The lie.",
+      "Being manipulated.",
+      "Honestly, I respect the audacity.",
+      "Nothing if I agreed freely—but I'm never trusting “family emergency” again."
+    ],
+    "dimensions": [
+      "trust",
+      "manipulation",
+      "boundaries",
+      "choice"
+    ],
+    "notes": "Distinguish the voluntary favor from the deceptive reason.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV044",
+    "title": "The $20,000 Mistake",
+    "category": "Moral Gremlins",
+    "level": 4,
+    "mode": "Coworkers",
+    "angle": "Accountability / Ethics",
+    "setup": "You notice a coworker made a mistake that could cost the company $20,000. Nobody else has noticed.",
+    "prompt": "First move?",
+    "choices": [
+      "Tell coworker privately.",
+      "Fix it together.",
+      "Tell management.",
+      "Depends whether it's still reversible."
+    ],
+    "complication": "Fixing it quietly would conceal the mistake completely.",
+    "complicationPrompt": "What do you do?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Fix and move on.",
+      "Fix, then disclose.",
+      "Let coworker choose whether to disclose.",
+      "Document everything."
+    ],
+    "dimensions": [
+      "accountability",
+      "loyalty",
+      "risk",
+      "ethics"
+    ],
+    "notes": "Workplace obligations vary; this is a values scenario, not professional advice.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV045",
+    "title": "The Promotion",
+    "category": "Money & Power",
+    "level": 4,
+    "mode": "Work Friends",
+    "angle": "Competition / Loyalty",
+    "setup": "You and your work friend are finalists for one promotion.",
+    "prompt": "Do you discuss it?",
+    "choices": [
+      "Completely openly.",
+      "Agree not to discuss it.",
+      "Share information but still compete hard.",
+      "Friendship and competition can coexist."
+    ],
+    "complication": "You accidentally receive an email containing information that would give you an advantage over them.",
+    "complicationPrompt": "What happens?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Delete it and disclose the mistake.",
+      "Tell my friend.",
+      "Tell management only.",
+      "I can't unknow it, so the process is already contaminated."
+    ],
+    "dimensions": [
+      "competition",
+      "loyalty",
+      "fairness",
+      "ambition"
+    ],
+    "notes": "Explore how friendship changes under legitimate competition.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV046",
+    "title": "The Boss Impression",
+    "category": "Weird Little Humans",
+    "level": 2,
+    "mode": "Coworkers / Work Friends",
+    "angle": "Humor / Risk",
+    "setup": "Your coworker does a devastatingly accurate impression of your boss.",
+    "prompt": "Laugh?",
+    "choices": [
+      "Immediately.",
+      "Only somewhere private.",
+      "Nope. Career preservation.",
+      "I contribute material."
+    ],
+    "complication": "The boss walks in during the impression and says, “Keep going.”",
+    "complicationPrompt": "Who are you now?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Dead.",
+      "Double down.",
+      "Compliment the boss through satire.",
+      "Abandon coworker and pretend we've never met."
+    ],
+    "dimensions": [
+      "humor",
+      "risk",
+      "social confidence",
+      "loyalty"
+    ],
+    "notes": "Mostly play. Not every scenario needs a deep inference.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV047",
+    "title": "The Exit Interview",
+    "category": "Moral Gremlins",
+    "level": 4,
+    "mode": "Work Friends",
+    "angle": "Loyalty / Voice",
+    "setup": "Your favorite coworker is quitting and asks what they should say about a serious workplace problem you've both complained about privately.",
+    "prompt": "Advice?",
+    "choices": [
+      "Tell them everything.",
+      "Be strategic.",
+      "Don't burn bridges.",
+      "Put it in writing."
+    ],
+    "complication": "They say, “I'll tell them—but only if I can say you agree with me.”",
+    "complicationPrompt": "Do they get your name?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Yes.",
+      "No. Their exit isn't my exit.",
+      "Only if I approve exactly what's said.",
+      "I'll speak for myself instead."
+    ],
+    "dimensions": [
+      "loyalty",
+      "voice",
+      "risk",
+      "boundaries"
+    ],
+    "notes": "Separate support for a concern from consent to be named.",
+    "status": "Active",
+    "initialType": "choice"
   }
 ]
