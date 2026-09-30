@@ -1044,5 +1044,175 @@
     "notes": "Focus on response to useful criticism, not the ex as authority.",
     "status": "Active",
     "initialType": "choice"
+  },
+  {
+    "id": "EV033",
+    "title": "The Relationship Documentary",
+    "category": "Oh Shit, That's Deep",
+    "level": 4,
+    "mode": "Couples",
+    "angle": "Privacy / Self-Image",
+    "setup": "A filmmaker offers $100,000 to follow your relationship for one year. You cannot control the edit.",
+    "prompt": "Do it?",
+    "choices": [
+      "Yes.",
+      "Absolutely not.",
+      "For enough money.",
+      "Only with protected private zones."
+    ],
+    "complication": "Halfway through, the filmmaker says viewers will probably sympathize much more with your partner.",
+    "complicationPrompt": "Continue?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Yep.",
+      "Quit.",
+      "Ask why.",
+      "Continue specifically because I want to know what I'm not seeing."
+    ],
+    "dimensions": [
+      "privacy",
+      "self-image",
+      "feedback",
+      "money"
+    ],
+    "notes": "Public sympathy is not objective truth; focus on reaction to outside perspective.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV034",
+    "title": "The Perfect Replica",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Dating / Couples",
+    "angle": "Grief / Identity",
+    "setup": "Technology can create an AI replica of your partner's personality that remembers your shared history.",
+    "prompt": "Would you want one if they died?",
+    "choices": [
+      "Yes.",
+      "Absolutely not.",
+      "Maybe temporarily.",
+      "I need approximately 400 ethical questions answered."
+    ],
+    "complication": "Your living partner says they would absolutely create one of you.",
+    "complicationPrompt": "How does knowing that feel?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Loved.",
+      "Creeped out.",
+      "Sad.",
+      "Weirdly revealing about what we think a person actually is."
+    ],
+    "dimensions": [
+      "grief",
+      "identity",
+      "attachment",
+      "mortality"
+    ],
+    "notes": "Treat as philosophical speculation, not a claim about real AI consciousness.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV035",
+    "title": "Thanksgiving Treason",
+    "category": "Moral Gremlins",
+    "level": 3,
+    "mode": "Family",
+    "angle": "Conflict / Fairness",
+    "setup": "Two relatives who despise each other both insist they'll attend your holiday dinner.",
+    "prompt": "What do you do?",
+    "choices": [
+      "Invite both. Adults can behave.",
+      "Invite neither.",
+      "Separate events.",
+      "Invite both with explicit rules."
+    ],
+    "complication": "One offers to stay home solely to make your life easier.",
+    "complicationPrompt": "Do you accept?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Yes, gratefully.",
+      "No—that rewards the difficult person.",
+      "Rotate who attends next year.",
+      "Reopen the entire negotiation."
+    ],
+    "dimensions": [
+      "family conflict",
+      "fairness",
+      "boundaries",
+      "hosting"
+    ],
+    "notes": "No single family-conflict strategy is universally correct.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV036",
+    "title": "Grandma's Hideous Lamp",
+    "category": "Money & Power",
+    "level": 3,
+    "mode": "Family",
+    "angle": "Inheritance / Sentiment",
+    "setup": "You inherit an objectively horrifying lamp that a beloved relative treasured.",
+    "prompt": "What happens to it?",
+    "choices": [
+      "Display it proudly.",
+      "Storage.",
+      "Donate it.",
+      "Give it a ceremonial place of ridiculous honor."
+    ],
+    "complication": "Another family member desperately wants it—but you discover it's worth $18,000.",
+    "complicationPrompt": "What wins?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Family claim. Give it to them.",
+      "Sell and split proceeds.",
+      "Keep it. It was left to me.",
+      "Tell everyone the value and decide openly."
+    ],
+    "dimensions": [
+      "inheritance",
+      "sentiment",
+      "money",
+      "fairness"
+    ],
+    "notes": "Money changes the stakes without resolving ownership or sentiment.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV037",
+    "title": "The Family Version of You",
+    "category": "Weird Little Humans",
+    "level": 3,
+    "mode": "Family",
+    "angle": "Memory / Identity",
+    "setup": "At dinner, your family tells a story about you that you've heard for decades. You remember it differently.",
+    "prompt": "What do you do?",
+    "choices": [
+      "Correct them.",
+      "Let family mythology live.",
+      "Ask everybody what they remember.",
+      "Make my version even more dramatic."
+    ],
+    "complication": "Someone produces video. You're wrong.",
+    "complicationPrompt": "Reaction?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Immediate surrender.",
+      "Challenge the cinematography.",
+      "Become fascinated by why I remembered it differently.",
+      "Never speak of this again."
+    ],
+    "dimensions": [
+      "memory",
+      "identity",
+      "humility",
+      "humor"
+    ],
+    "notes": "Memory is reconstructive; do not overinterpret a mismatch.",
+    "status": "Active",
+    "initialType": "choice"
   }
 ]
