@@ -1,0 +1,95 @@
+import scenarios from "./scenarios.json";
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    if (url.pathname.startsWith("/api/rooms")) return handleApi(request, env, url);
+    return env.ASSETS.fetch(request);
+  }
+};
+
+async function handleApi(request, env, url) {
+  const parts = url.pathname.split("/").filter(Boolean);
+  if (request.method === "POST" && parts.length === 2) {
+    const body = await request.json().catch(() => ({}));
+    for (let tries=0; tries<5; tries++) {
+      const code = makeCode();
+      const stub = env.ROOMS.get(env.ROOMS.idFromName(code));
+      const response = await stub.fetch(new Request(new URL("/create", url.origin), {
+        method:"POST", headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({code,name:body.name,deck:body.deck})
+      }));
+      if (response.status !== 409) return response;
+    }
+    return json({error:"ROOM_CODE_COLLISION"},503);
+  }
+  if (parts.length < 3) return json({error:"NOT_FOUND"},404);
+  const code=parts[2].toUpperCase(), action=parts[3]||"";
+  const stub=env.ROOMS.get(env.ROOMS.idFromName(code));
+  const target=new URL("/"+action,url.origin); target.search=url.search;
+  return stub.fetch(new Request(target,request));
+}
+
+function makeCode(){
+  const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789", bytes=crypto.getRandomValues(new Uint8Array(5));
+  return Array.from(bytes,b=>chars[b%chars.length]).join("");
+}
+function json(data,status=200){return new Response(JSON.stringify(data),{status,headers:{"Content-Type":"application/json","Cache-Control":"no-store"}})}
+function token(){return crypto.randomUUID().replaceAll("-","")}
+
+export class Room {
+  constructor(state,env){this.state=state;this.env=env}
+  load(){return this.state.storage.get("room")}
+  async save(room){room.updatedAt=Date.now();await this.state.storage.put("room",room)}
+  scenario(room){return scenarios.find(s=>s.id===room.scenarioId)}
+  pick(deck,exclude=null){
+    let pool=scenarios.filter(s=>deck==="ALL"||s.category===deck);
+    if(exclude&&pool.length>1)pool=pool.filter(s=>s.id!==exclude);
+    return pool[Math.floor(Math.random()*pool.length)];
+  }
+  playerIndex(room,t){return room.players.findIndex(p=>p?.token===t)}
+  both(room,f){return room.players.length===2&&room.players.every(p=>p&&p[f]!==null&&p[f]!==undefined)}
+  view(room,t){
+    const me=this.playerIndex(room,t);if(me<0)return null;
+    const s=this.scenario(room),reveal=room.phase==="reveal";
+    return {code:room.code,phase:room.phase,deck:room.deck,round:room.round,me:me+1,
+      players:room.players.map(p=>p?({joined:true,name:p.name,lockedInitial:p.initial!==null,lockedAfter:p.after!==null,...(reveal?{initial:p.initial,after:p.after}:{})}):({joined:false})),
+      scenario:s?{id:s.id,title:s.title,category:s.category,level:s.level,setup:s.setup,prompt:s.prompt,choices:s.choices,
+        complication:["complication","after","reveal"].includes(room.phase)?s.complication:null,
+        ...(reveal?{dimensions:s.dimensions,notes:s.notes}:{})}:null};
+  }
+  async fetch(request){
+    const url=new URL(request.url),path=url.pathname;
+    if(request.method==="POST"&&path==="/create"){
+      if(await this.load())return json({error:"ROOM_EXISTS"},409);
+      const body=await request.json().catch(()=>({})),first=this.pick(body.deck||"ALL");
+      const room={code:body.code,deck:body.deck||"ALL",phase:"lobby",round:1,scenarioId:first.id,
+        players:[{token:token(),name:String(body.name||"Player 1").slice(0,30),initial:null,after:null}],createdAt:Date.now(),updatedAt:Date.now()};
+      await this.save(room);return json({code:room.code,playerToken:room.players[0].token},201);
+    }
+    const room=await this.load();if(!room)return json({error:"ROOM_NOT_FOUND"},404);
+    if(request.method==="POST"&&path==="/join"){
+      if(room.players.length>=2)return json({error:"ROOM_FULL"},409);
+      const body=await request.json().catch(()=>({})),p={token:token(),name:String(body.name||"Player 2").slice(0,30),initial:null,after:null};
+      room.players.push(p);room.phase="initial";await this.save(room);return json({code:room.code,playerToken:p.token},201);
+    }
+    const t=request.headers.get("X-Player-Token")||url.searchParams.get("token"),pi=this.playerIndex(room,t);
+    if(pi<0)return json({error:"INVALID_PLAYER"},401);
+    if(request.method==="GET"&&path==="/")return json(this.view(room,t));
+    if(request.method==="POST"&&path==="/answer"){
+      const body=await request.json().catch(()=>({})),s=this.scenario(room),choice=Number(body.choice);
+      if(!Number.isInteger(choice)||choice<0||choice>=s.choices.length)return json({error:"INVALID_CHOICE"},400);
+      if(room.phase==="initial"){room.players[pi].initial=choice;if(this.both(room,"initial"))room.phase="complication"}
+      else if(room.phase==="complication"||room.phase==="after"){room.phase="after";room.players[pi].after=choice;if(this.both(room,"after"))room.phase="reveal"}
+      else return json({error:"NOT_ACCEPTING_ANSWER",phase:room.phase},409);
+      await this.save(room);return json(this.view(room,t));
+    }
+    if(request.method==="POST"&&path==="/next"){
+      if(room.phase!=="reveal")return json({error:"ROUND_NOT_FINISHED"},409);
+      if(pi!==0)return json({error:"HOST_ONLY"},403);
+      const next=this.pick(room.deck,room.scenarioId);room.scenarioId=next.id;room.round++;room.phase="initial";
+      room.players.forEach(p=>{p.initial=null;p.after=null});await this.save(room);return json(this.view(room,t));
+    }
+    return json({error:"NOT_FOUND"},404);
+  }
+}
