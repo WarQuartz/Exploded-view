@@ -56,6 +56,9 @@ export class Room {
       players:room.players.map(p=>p?({joined:true,name:p.name,lockedInitial:p.initial!==null,lockedAfter:p.after!==null,...(reveal?{initial:p.initial,after:p.after}:{})}):({joined:false})),
       scenario:s?{id:s.id,title:s.title,category:s.category,level:s.level,setup:s.setup,prompt:s.prompt,choices:s.choices,
         complication:["complication","after","reveal"].includes(room.phase)?s.complication:null,
+        complicationPrompt:["complication","after","reveal"].includes(room.phase)?s.complicationPrompt:null,
+        complicationType:["complication","after","reveal"].includes(room.phase)?s.complicationType:null,
+        complicationChoices:["complication","after","reveal"].includes(room.phase)?s.complicationChoices:null,
         ...(reveal?{dimensions:s.dimensions,notes:s.notes}:{})}:null};
   }
   async fetch(request){
@@ -77,10 +80,25 @@ export class Room {
     if(pi<0)return json({error:"INVALID_PLAYER"},401);
     if(request.method==="GET"&&path==="/")return json(this.view(room,t));
     if(request.method==="POST"&&path==="/answer"){
-      const body=await request.json().catch(()=>({})),s=this.scenario(room),choice=Number(body.choice);
-      if(!Number.isInteger(choice)||choice<0||choice>=s.choices.length)return json({error:"INVALID_CHOICE"},400);
-      if(room.phase==="initial"){room.players[pi].initial=choice;if(this.both(room,"initial"))room.phase="complication"}
-      else if(room.phase==="complication"||room.phase==="after"){room.phase="after";room.players[pi].after=choice;if(this.both(room,"after"))room.phase="reveal"}
+      const body=await request.json().catch(()=>({})),s=this.scenario(room);
+      if(room.phase==="initial"){
+        const choice=Number(body.choice);
+        if(!Number.isInteger(choice)||choice<0||choice>=s.choices.length)return json({error:"INVALID_CHOICE"},400);
+        room.players[pi].initial=choice;if(this.both(room,"initial"))room.phase="complication";
+      }
+      else if(room.phase==="complication"||room.phase==="after"){
+        room.phase="after";
+        if(s.complicationType==="text"){
+          const answer=String(body.text||"").trim().slice(0,500);
+          if(!answer)return json({error:"ANSWER_REQUIRED"},400);
+          room.players[pi].after={type:"text",value:answer};
+        } else {
+          const choice=Number(body.choice);
+          if(!Number.isInteger(choice)||choice<0||choice>=s.complicationChoices.length)return json({error:"INVALID_CHOICE"},400);
+          room.players[pi].after={type:"choice",value:choice};
+        }
+        if(this.both(room,"after"))room.phase="reveal";
+      }
       else return json({error:"NOT_ACCEPTING_ANSWER",phase:room.phase},409);
       await this.save(room);return json(this.view(room,t));
     }
