@@ -1624,6 +1624,35 @@
     "initialType": "choice"
   },
   {
+    "id": "EV050",
+    "title": "The Perfect Meal",
+    "category": "Weird Little Humans",
+    "level": 3,
+    "mode": "New People / Anybody",
+    "angle": "Pleasure / Meaning",
+    "setup": "A machine can produce the best meal you've ever tasted, but you can eat it only once.",
+    "prompt": "When do you use it?",
+    "choices": [
+      "Immediately.",
+      "Save it for a milestone.",
+      "Share it.",
+      "Never use it because choosing the moment would make me insane."
+    ],
+    "complication": "It expires tonight.",
+    "complicationPrompt": "Who gets a seat at the table?",
+    "complicationType": "text",
+    "complicationChoices": [],
+    "dimensions": [
+      "pleasure",
+      "anticipation",
+      "sharing",
+      "meaning"
+    ],
+    "notes": "Short answer reveals who comes to mind; do not infer relationship quality from omission.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
     "id": "EV051",
     "title": "The Invisible Day",
     "category": "Weird Little Humans",
@@ -1724,5 +1753,228 @@
     "notes": "Mostly play; do not overinterpret.",
     "status": "Active",
     "initialType": "choice"
+  },
+  {
+    "id": "EV054",
+    "title": "The Swan Problem",
+    "category": "Weird Little Humans",
+    "level": 1,
+    "mode": "Anybody",
+    "angle": "Chaos / Teamwork",
+    "setup": "You and another person must cross a park controlled by one enormous, furious swan. It has chosen violence.",
+    "prompt": "Strategy?",
+    "choices": [
+      "Distract it.",
+      "Run.",
+      "Assert dominance.",
+      "Negotiate with snacks."
+    ],
+    "complication": "The swan ignores the other person completely. It specifically hates you.",
+    "complicationPrompt": "What happens now?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "My partner becomes swan negotiator.",
+      "I need to know what I did.",
+      "We find another route.",
+      "This is personal now."
+    ],
+    "dimensions": [
+      "humor",
+      "improvisation",
+      "teamwork"
+    ],
+    "notes": "Nothing profound. Sometimes the swan is just an asshole.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV055",
+    "title": "The Reputation Button",
+    "category": "Moral Gremlins",
+    "level": 4,
+    "mode": "Anybody",
+    "angle": "Reputation / Identity",
+    "setup": "Press a button and everyone you know thinks 10% better of you forever. Nothing about you actually changes.",
+    "prompt": "Press?",
+    "choices": [
+      "Yes.",
+      "No.",
+      "Depends what “better” means.",
+      "Press repeatedly until stopped."
+    ],
+    "complication": "The improvement comes entirely from people forgetting one mistake you've made.",
+    "complicationPrompt": "Still press?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Yes.",
+      "No.",
+      "Depends on the mistake.",
+      "I'd rather be forgiven than forgotten."
+    ],
+    "dimensions": [
+      "reputation",
+      "identity",
+      "forgiveness",
+      "control"
+    ],
+    "notes": "Distinguish being seen differently from actually changing.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV056",
+    "title": "The Honest Mirror",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Anybody / Solo",
+    "angle": "Self-Knowledge / Avoidance",
+    "setup": "A mirror can tell you one completely truthful thing about yourself.",
+    "prompt": "What do you ask about?",
+    "choices": [
+      "How people experience me.",
+      "What I'm capable of.",
+      "What I'm avoiding.",
+      "Whether I actually want the life I'm building."
+    ],
+    "complication": "The mirror says it can answer—but you cannot unlearn the answer.",
+    "complicationPrompt": "Ask anyway?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Yes.",
+      "No.",
+      "Change my question.",
+      "Ask the other person what they think first."
+    ],
+    "dimensions": [
+      "self-knowledge",
+      "avoidance",
+      "identity",
+      "uncertainty"
+    ],
+    "notes": "A fictional mirror is a metaphor, not an objective psychological authority.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV057",
+    "title": "Ten Minutes With Future You",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Anybody / Solo",
+    "angle": "Future / Meaning",
+    "setup": "You get ten minutes with yourself twenty years from now.",
+    "prompt": "First question?",
+    "choices": [
+      "Are we happy?",
+      "What should I stop doing?",
+      "What should I start doing?",
+      "Give me lottery numbers and then we'll get philosophical."
+    ],
+    "complication": "Future You refuses to answer questions and says, “You talk. I'll listen.”",
+    "complicationPrompt": "What do you tell them?",
+    "complicationType": "text",
+    "complicationChoices": [],
+    "dimensions": [
+      "future orientation",
+      "meaning",
+      "regret",
+      "desire"
+    ],
+    "notes": "Short answer invites reflection without pretending to predict the future.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV058",
+    "title": "The One Person Rule",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Anybody / Solo",
+    "angle": "Feedback / Vulnerability",
+    "setup": "You may learn exactly what one person genuinely thinks of you.",
+    "prompt": "Who?",
+    "choices": [
+      "Partner/crush.",
+      "Family member.",
+      "Friend.",
+      "Someone who dislikes me."
+    ],
+    "complication": "You cannot choose what part of their opinion you hear. You receive the thing they find most difficult about you.",
+    "complicationPrompt": "Still want it?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Absolutely.",
+      "Nope.",
+      "Only if I can respond afterward.",
+      "Yes—but I want what they love most too."
+    ],
+    "dimensions": [
+      "feedback",
+      "vulnerability",
+      "control",
+      "relationships"
+    ],
+    "notes": "Hypothetical opinions are not objective self-knowledge.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV059",
+    "title": "The Undo",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Anybody / Solo",
+    "angle": "Regret / Attachment",
+    "setup": "You may undo one decision from your past. You retain your current memories, but nobody else does.",
+    "prompt": "Do it?",
+    "choices": [
+      "Yes.",
+      "No.",
+      "Depends on consequences.",
+      "I'm already making a terrifying spreadsheet."
+    ],
+    "complication": "Undoing it means one person currently in your life will never meet you.",
+    "complicationPrompt": "What determines your choice now?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Who the person is.",
+      "Nothing. I won't erase a relationship.",
+      "How damaging the original decision was.",
+      "I don't touch the timeline."
+    ],
+    "dimensions": [
+      "regret",
+      "attachment",
+      "identity",
+      "consequences"
+    ],
+    "notes": "Keep counterfactual; do not imply regrets should be acted on.",
+    "status": "Active",
+    "initialType": "choice"
+  },
+  {
+    "id": "EV060",
+    "title": "The Empty Calendar",
+    "category": "Oh Shit, That's Deep",
+    "level": 5,
+    "mode": "Solo / Anybody",
+    "angle": "Identity / Desire",
+    "setup": "For thirty days, every obligation disappears. Bills are paid. Nobody needs you. Nobody is angry. Nobody is disappointed. Work doesn't need you. Family and friends are fine. There is nothing you are supposed to do.",
+    "prompt": "What do you actually do after the novelty wears off?",
+    "choices": [],
+    "complication": "On day fifteen, you realize nobody is going to praise you for whatever you choose next, either.",
+    "complicationPrompt": "What do you continue doing anyway?",
+    "complicationType": "text",
+    "complicationChoices": [],
+    "dimensions": [
+      "identity",
+      "usefulness",
+      "intrinsic desire",
+      "freedom",
+      "meaning"
+    ],
+    "notes": "Best used as free response. Explore what remains when usefulness and praise are removed.",
+    "status": "Active",
+    "initialType": "text"
   }
 ]
