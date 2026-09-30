@@ -21,7 +21,15 @@
       "teamwork",
       "uncertainty"
     ],
-    "notes": "Notice reasoning, not just choice. Does the person revise when new information appears?"
+    "notes": "Notice reasoning, not just choice. Does the person revise when new information appears?",
+    "complicationPrompt": "Gerald has your number. What do you do now?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Reply: “Who is Gerald?”",
+      "Do not reply; document everything and contact authorities/security.",
+      "Call the number instead of texting.",
+      "Block it, leave, and do not investigate further."
+    ]
   },
   {
     "id": "EV002",
@@ -45,7 +53,15 @@
       "play",
       "control"
     ],
-    "notes": "Watch how they negotiate disagreement and whether fun is treated as wasteful or valuable."
+    "notes": "Watch how they negotiate disagreement and whether fun is treated as wasteful or valuable.",
+    "complicationPrompt": "What happens to the ridiculous $349 item?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "It stays. Mystery luxury wins.",
+      "It goes back. We agreed on a budget.",
+      "Trade it for something equally ridiculous that we both choose.",
+      "Keep it only if the sneaker can defend it in 30 seconds."
+    ]
   },
   {
     "id": "EV003",
@@ -69,7 +85,15 @@
       "responsibility",
       "influence"
     ],
-    "notes": "Look for what changes when power becomes materially rewarding."
+    "notes": "Look for what changes when power becomes materially rewarding.",
+    "complicationPrompt": "What do you do with the $2 million donation?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Return it and tell the truth now.",
+      "Freeze the money, get legal guidance, and dismantle responsibly.",
+      "Use it only for a transparent charitable purpose, then reveal the truth.",
+      "The cult has a treasury now. This has gotten out of hand."
+    ]
   },
   {
     "id": "EV004",
@@ -93,7 +117,15 @@
       "paternalism",
       "humor"
     ],
-    "notes": "The follow-up matters more than the first answer: how does the person handle legitimate disagreement?"
+    "notes": "The follow-up matters more than the first answer: how does the person handle legitimate disagreement?",
+    "complicationPrompt": "The citizens want a law you both hate. What wins?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Allow it; legitimate majority rule beats our preference.",
+      "Refuse it; some principles should not be up for a vote.",
+      "Allow a public vote only after debate and a waiting period.",
+      "Find a compromise version that protects the underlying demand."
+    ]
   },
   {
     "id": "EV005",
@@ -117,7 +149,10 @@
       "humor",
       "self-awareness"
     ],
-    "notes": "Do they cast themselves only as victim/hero, or can they see their own footprint?"
+    "notes": "Do they cast themselves only as victim/hero, or can they see their own footprint?",
+    "complicationPrompt": "Now you're the exhibit. What does the plaque say?",
+    "complicationType": "text",
+    "complicationChoices": []
   },
   {
     "id": "EV006",
@@ -141,7 +176,15 @@
       "rationalization",
       "proximity"
     ],
-    "notes": "Compare principle before and after emotional proximity is introduced."
+    "notes": "Compare principle before and after emotional proximity is introduced.",
+    "complicationPrompt": "Knowing the stranger is your future child, what do you do?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Press it anyway; harmless is still harmless.",
+      "Do not press it anymore.",
+      "Press only if the lie is protective or joyful.",
+      "I need to know exactly what the lie will be before deciding."
+    ]
   },
   {
     "id": "EV007",
@@ -165,7 +208,15 @@
       "autonomy",
       "negotiation"
     ],
-    "notes": "What they protect after the swap may reveal more than the original five."
+    "notes": "What they protect after the swap may reveal more than the original five.",
+    "complicationPrompt": "Your partner deleted one of your five things. What matters most now?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Fight to restore my original item.",
+      "Accept the swap; the point is adapting together.",
+      "Negotiate a different replacement.",
+      "The object matters less than whether they understood why I chose it."
+    ]
   },
   {
     "id": "EV008",
@@ -189,7 +240,15 @@
       "humor",
       "caretaking"
     ],
-    "notes": "Keep interpretation light; this is about negotiating comfort and closeness, not diagnosing sexuality."
+    "notes": "Keep interpretation light; this is about negotiating comfort and closeness, not diagnosing sexuality.",
+    "complicationPrompt": "The whale bed has doubled speed at 2 a.m. Who handles it?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "I get up and fix it.",
+      "You get up; I am spiritually unavailable.",
+      "We both get up and solve it together.",
+      "Nobody. We ride the whale carousel until morning."
+    ]
   },
   {
     "id": "EV009",
@@ -213,7 +272,15 @@
       "family",
       "fairness"
     ],
-    "notes": "The principle-versus-proximity shift is the key data point."
+    "notes": "The principle-versus-proximity shift is the key data point.",
+    "complicationPrompt": "Does finding out the chef is your brother change the decision?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "No. Same standard, same consequence.",
+      "Yes. I give him one structured chance I would not give a stranger.",
+      "I step out of the decision because I am too close to it.",
+      "I protect the staff first, then help my brother separately."
+    ]
   },
   {
     "id": "EV010",
@@ -237,7 +304,15 @@
       "proportionality",
       "curiosity"
     ],
-    "notes": "Useful because the 'wrong' act is trivial enough to expose proportionality rather than obvious morality."
+    "notes": "Useful because the 'wrong' act is trivial enough to expose proportionality rather than obvious morality.",
+    "complicationPrompt": "Does the labeling change how you see the spoon collection?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Yes. It is weirdly sentimental now.",
+      "No. It is still 1,842 stolen spoons.",
+      "Yes, and now I want to hear the stories behind them.",
+      "It makes it creepier, not sweeter."
+    ]
   },
   {
     "id": "EV011",
@@ -261,7 +336,15 @@
       "respect",
       "attachment"
     ],
-    "notes": "Notice how ownership, privacy, and mystery interact."
+    "notes": "Notice how ownership, privacy, and mystery interact.",
+    "complicationPrompt": "What do you do about the unopened letters?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Never open them. They are not ours.",
+      "Try to locate the owner or their family and return them.",
+      "Open one only if there is evidence of an emergency or legal need.",
+      "The mystery would eat me alive; I would probably read them."
+    ]
   },
   {
     "id": "EV012",
@@ -285,7 +368,15 @@
       "risk",
       "humor"
     ],
-    "notes": "Great early-date scenario because playfulness itself becomes visible."
+    "notes": "Great early-date scenario because playfulness itself becomes visible.",
+    "complicationPrompt": "The bride hands you the microphone. What comes out of your mouth?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Confess immediately: wrong wedding, very sorry.",
+      "Give a warm generic toast and escape afterward.",
+      "Commit completely and invent an outrageous connection to her mother.",
+      "Hand the microphone to my date. This is their problem now."
+    ]
   },
   {
     "id": "EV013",
@@ -308,7 +399,15 @@
       "ambition",
       "intrinsic motivation"
     ],
-    "notes": "What remains attractive after money is removed?"
+    "notes": "What remains attractive after money is removed?",
+    "complicationPrompt": "If fame cannot make you money, do you still take the year?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Yes, for something meaningful.",
+      "Yes, purely for the experience and story.",
+      "No. The trade is no longer worth the intrusion.",
+      "Only if I can use the attention to benefit other people."
+    ]
   },
   {
     "id": "EV014",
@@ -332,7 +431,15 @@
       "attachment",
       "uncertainty"
     ],
-    "notes": "Avoid treating any answer as pathology; this is about meaning-making and tradeoffs."
+    "notes": "Avoid treating any answer as pathology; this is about meaning-making and tradeoffs.",
+    "complicationPrompt": "Knowing the lost happy memory involves someone you love, what do you choose?",
+    "complicationType": "choice",
+    "complicationChoices": [
+      "Keep all my memories. No trade.",
+      "Still erase the painful one.",
+      "Only proceed if I can tell the person I love what I am choosing.",
+      "I cannot decide without knowing which relationship is at risk."
+    ]
   },
   {
     "id": "EV015",
@@ -355,6 +462,9 @@
       "imagination",
       "anthropomorphism"
     ],
-    "notes": "Pure play with a small window into curiosity and empathy."
+    "notes": "Pure play with a small window into curiosity and empathy.",
+    "complicationPrompt": "What do you hope the animals tell you humans got completely wrong?",
+    "complicationType": "text",
+    "complicationChoices": []
   }
 ]
