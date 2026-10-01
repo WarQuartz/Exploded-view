@@ -50,7 +50,7 @@ export class Room {
     return pool[Math.floor(Math.random()*pool.length)];
   }
   playerIndex(room,t){return room.players.findIndex(p=>p?.token===t)}
-  both(room,f){return room.players.length===2&&room.players.every(p=>p&&p[f]!==null&&p[f]!==undefined)}
+  allAnswered(room,f){return room.players.length>0&&room.players.every(p=>p&&p[f]!==null&&p[f]!==undefined)}
   count(room,s,stage,answer){
     if(!room.stats||!this.env.ANALYTICS)return;
     this.env.ANALYTICS.writeDataPoint({indexes:[s.id],blobs:[s.id,s.category||"",s.mode||"",s.angle||"",stage,answer],doubles:[1]});
@@ -72,13 +72,13 @@ export class Room {
     if(request.method==="POST"&&path==="/create"){
       if(await this.load())return json({error:"ROOM_EXISTS"},409);
       const body=await request.json().catch(()=>({})),deck=body.deck||"ALL",mode=body.mode||"ALL",first=this.pick(deck,mode);
-      const room={code:body.code,deck,mode,stats:body.stats===true,phase:"lobby",round:1,scenarioId:first.id,
+      const room={code:body.code,deck,mode,stats:body.stats===true,phase:mode==="Solo"?"initial":"lobby",round:1,scenarioId:first.id,
         players:[{token:token(),name:String(body.name||"Player 1").slice(0,30),initial:null,after:null}],createdAt:Date.now(),updatedAt:Date.now()};
       await this.save(room);return json({code:room.code,playerToken:room.players[0].token},201);
     }
     const room=await this.load();if(!room)return json({error:"ROOM_NOT_FOUND"},404);
     if(request.method==="POST"&&path==="/join"){
-      if(room.players.length>=2)return json({error:"ROOM_FULL"},409);
+      if(room.mode==="Solo")return json({error:"SOLO_ROOM"},409);\n      if(room.players.length>=2)return json({error:"ROOM_FULL"},409);
       const body=await request.json().catch(()=>({})),p={token:token(),name:String(body.name||"Player 2").slice(0,30),initial:null,after:null};
       room.players.push(p);room.phase="initial";await this.save(room);return json({code:room.code,playerToken:p.token},201);
     }
@@ -95,7 +95,7 @@ export class Room {
           const choice=Number(body.choice);if(!Number.isInteger(choice)||choice<0||choice>=s.choices.length)return json({error:"INVALID_CHOICE"},400);
           room.players[pi].initial={type:"choice",value:choice};this.count(room,s,"initial",String(choice));
         }
-        if(this.both(room,"initial"))room.phase="complication";
+        if(this.allAnswered(room,"initial"))room.phase="complication";
       }
       else if(room.phase==="complication"||room.phase==="after"){
         room.phase="after";
@@ -108,7 +108,7 @@ export class Room {
           if(!Number.isInteger(choice)||choice<0||choice>=s.complicationChoices.length)return json({error:"INVALID_CHOICE"},400);
           room.players[pi].after={type:"choice",value:choice};this.count(room,s,"boom",String(choice));
         }
-        if(this.both(room,"after"))room.phase="reveal";
+        if(this.allAnswered(room,"after"))room.phase="reveal";
       }
       else return json({error:"NOT_ACCEPTING_ANSWER",phase:room.phase},409);
       await this.save(room);return json(this.view(room,t));
