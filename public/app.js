@@ -87,24 +87,22 @@ async function submitText(value){
  catch(e){alert(e.message)}
 }
 function renderReveal(r){
- show("reveal");const s=r.scenario,p1=r.players[0],p2=r.players[1],C=s.choices;
- const i1=answerText(p1.initial,C),i2=answerText(p2.initial,C),a1=answerText(p1.after,s.complicationChoices),a2=answerText(p2.after,s.complicationChoices);
+ show("reveal");const s=r.scenario,p1=r.players[0],p2=r.players[1]||null,C=s.choices;
+ const i1=answerText(p1.initial,C),a1=answerText(p1.after,s.complicationChoices);
  $("#revealTitle").textContent=s.title;
- $("#answers").innerHTML=`
- <div class="answer"><b>${p1.name} — first instinct</b><br>${i1}</div>
- <div class="answer"><b>${p2.name} — first instinct</b><br>${i2}</div>
- <div class="answer"><b>${p1.name} — after BOOM</b><br>${a1}</div>\n <div class="answer"><b>${p2.name} — after BOOM</b><br>${a2}</div>`;
- const same0=i1.trim().toLowerCase()===i2.trim().toLowerCase();
- const same1=a1.trim().toLowerCase()===a2.trim().toLowerCase();
- let bits=[
-   same0?"You started from the same instinct.":"Your first instincts split.",
-   same1?"When Gerald changed the variable, you landed in the same place.":"Gerald changed the variable and your paths split."
- ];
- bits.push("The second answer is a new decision, not a do-over of the first.");
+ if(!p2){
+   $("#answers").innerHTML=`<div class="answer"><b>Your first instinct</b><br>${i1}</div><div class="answer"><b>After BOOM</b><br>${a1}</div>`;
+   $("#analysis").innerHTML=`<p>Your second answer is not a correction of your first. Gerald changed the variable.</p><p><b>The useful question:</b> What became more important after the BOOM—and what does that tension make you curious about?</p>`;
+   $("#underhood").textContent=`Possible themes: ${s.dimensions.join(" • ")}. ${s.notes}`;
+   $("#nextRound").classList.remove("hidden");$("#guestWait").classList.add("hidden");return;
+ }
+ const i2=answerText(p2.initial,C),a2=answerText(p2.after,s.complicationChoices);
+ $("#answers").innerHTML=`<div class="answer"><b>${p1.name} — first instinct</b><br>${i1}</div><div class="answer"><b>${p2.name} — first instinct</b><br>${i2}</div><div class="answer"><b>${p1.name} — after BOOM</b><br>${a1}</div><div class="answer"><b>${p2.name} — after BOOM</b><br>${a2}</div>`;
+ const same0=i1.trim().toLowerCase()===i2.trim().toLowerCase(),same1=a1.trim().toLowerCase()===a2.trim().toLowerCase();
+ let bits=[same0?"You started from the same instinct.":"Your first instincts split.",same1?"When Gerald changed the variable, you landed in the same place.":"Gerald changed the variable and your paths split.","The second answer is a new decision, not a do-over of the first."];
  $("#analysis").innerHTML=`<p>${bits.join(" ")}</p><p><b>The useful question:</b> What mattered most to each of you once the new information arrived?</p>`;
  $("#underhood").textContent=`Under the hood: ${s.dimensions.join(" • ")}. ${s.notes}`;
- $("#nextRound").classList.toggle("hidden",r.me!==1);
- $("#guestWait").classList.toggle("hidden",r.me===1);
+ $("#nextRound").classList.toggle("hidden",r.me!==1);$("#guestWait").classList.toggle("hidden",r.me===1);
 }
 $("#nextRound").onclick=async()=>{try{await api(`/api/rooms/${code}/next`,{method:"POST",body:"{}"});await refresh()}catch(e){alert(e.message)}};
 
