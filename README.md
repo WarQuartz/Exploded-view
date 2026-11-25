@@ -1,5 +1,12 @@
 # Exploded View
 
+Human discovery platform for Question Quartney.
+
+**Start with [the authoritative architecture and product contract](ARCHITECTURE.md) and [agent instructions](AGENTS.md).**
+
+Laboratory: https://exploded-view-lab.courtneyhurt4.workers.dev/ — separate Worker, source `lab/worker.mjs`; see architecture for actual capabilities and pending work.
+
+## Original Arena
 Two-player scenario game for Question Quartney.
 
 ## Cloudflare architecture
